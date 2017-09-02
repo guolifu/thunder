@@ -9,8 +9,11 @@ trait View{
         if(empty($view)){
             $route = new route();
             $view = $route->action;
+            $view = $view.'/'.$view.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
+
+        }else{
+            $view = $view.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
         }
-        $view = $view.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
         $view_file = APP.'/views/'.$view;
         if(is_file($view_file)){
             $loader = new \Twig_Loader_Filesystem(APP.'/views');

@@ -35,7 +35,6 @@ class Thunder{
             return true;
         }else {
             $class = str_replace('\\', '/', $class);
-//            dump($class);
             $class_arr = explode('/',$class);
 
             $file = ($class_arr[0] =='app' && $class_arr[1]=='model')?
@@ -43,7 +42,6 @@ class Thunder{
 
             CORE .'/'. $class . '.php';
             if (is_file($file)) {
-//				dump($file);
                 include $file;
                 self::$classMap[$class] = $class;
             } else {

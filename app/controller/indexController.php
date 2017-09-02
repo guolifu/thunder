@@ -56,6 +56,9 @@ class indexController{
         $m = model('student');
         $m->flushall();
     }
+    public function upload(){
+        $this->display();
+    }
 
 
 }
