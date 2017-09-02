@@ -23,7 +23,10 @@ class __TwigTemplate_1ff4ef345d1fb54e68295c1195ffbdbe955da81a290d4c6452c1accc9c4
     <title>Title</title>
 </head>
 <body>
-
+<form action=\"\" enctype=\"multipart/form-data\" method=\"post\" >
+    <input type=\"file\" name=\"photo\" />
+    <input type=\"submit\" value=\"提交\" >
+</form>
 </body>
 </html>";
     }
@@ -55,7 +58,10 @@ class __TwigTemplate_1ff4ef345d1fb54e68295c1195ffbdbe955da81a290d4c6452c1accc9c4
     <title>Title</title>
 </head>
 <body>
-
+<form action=\"\" enctype=\"multipart/form-data\" method=\"post\" >
+    <input type=\"file\" name=\"photo\" />
+    <input type=\"submit\" value=\"提交\" >
+</form>
 </body>
 </html>", "index/upload.html", "D:\\phpStudy\\WWW\\thunder2.0\\app\\views\\Index\\upload.html");
     }

@@ -57,6 +57,7 @@ class indexController{
         $m->flushall();
     }
     public function upload(){
+        dump(http_method());
         $this->display();
     }
 
