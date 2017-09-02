@@ -10,7 +10,7 @@ class File{
         $this->path = $conf['PATH'];
     }
     public function log($message,$file = 'log'){
-        $date_path = date('YmdH');
+        $date_path = date('Ymd');
         if(!is_dir($this->path.$date_path)){
             mkdir($this->path.$date_path,'0777',true);
         }
