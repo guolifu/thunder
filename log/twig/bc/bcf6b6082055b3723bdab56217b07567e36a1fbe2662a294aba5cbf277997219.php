@@ -24,6 +24,7 @@ class __TwigTemplate_1ff4ef345d1fb54e68295c1195ffbdbe955da81a290d4c6452c1accc9c4
 </head>
 <body>
 <form action=\"\" enctype=\"multipart/form-data\" method=\"post\" >
+    <input type=\"text\" name=\"test\" />
     <input type=\"file\" name=\"photo\" />
     <input type=\"submit\" value=\"提交\" >
 </form>
@@ -59,6 +60,7 @@ class __TwigTemplate_1ff4ef345d1fb54e68295c1195ffbdbe955da81a290d4c6452c1accc9c4
 </head>
 <body>
 <form action=\"\" enctype=\"multipart/form-data\" method=\"post\" >
+    <input type=\"text\" name=\"test\" />
     <input type=\"file\" name=\"photo\" />
     <input type=\"submit\" value=\"提交\" >
 </form>

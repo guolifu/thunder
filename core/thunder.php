@@ -7,6 +7,9 @@ class Thunder{
         session_start();
 
         \thunder\Log::init();
+        define('REQUEST_METHOD',$_SERVER['REQUEST_METHOD']);
+        define('IS_GET',        REQUEST_METHOD =='GET' ? true : false);
+        define('IS_POST',       REQUEST_METHOD =='POST' ? true : false);
         $route = new \thunder\Route();
 
         $ctrlClass_name = $route->ctrl;
