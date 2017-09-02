@@ -1,7 +1,7 @@
 <?php
 namespace app\model;
-use core\lib\model;
-class studentModel extends model{
+use \thunder\Model;
+class studentModel extends Model{
     public function test(){
         echo 1;
     }

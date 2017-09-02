@@ -1,15 +1,13 @@
 <?php
 
-namespace core;
-use \core\lib\Route;
-use \core\lib\Conf;
 class Thunder{
     public static $classMap = array();
     public $assign;
     static public function run(){
         session_start();
-        \core\lib\Log::init();
-        $route = new route();
+
+        \thunder\Log::init();
+        $route = new \thunder\Route();
 
         $ctrlClass_name = $route->ctrl;
         $action = $route->action;
@@ -20,11 +18,15 @@ class Thunder{
             include $controller_file;
             /*实例化控制器类*/
             $controller = new $ctrlClass();
+            if(!in_array($action,get_class_methods($controller))){
+                throw new \Exception('找不到方法【'.$action.'】');
+            }
+
             /*调用方法*/
             $controller->$action();
-            \core\lib\Log::log('ctrl:'.$ctrlClass_name.'=>'.'action:'.$action);
+            \thunder\Log::log('ctrl:'.$ctrlClass_name.'=>'.'action:'.$action);
         }else{
-            throw new \Exception('找不到控制器'.$ctrlClass_name);
+            throw new \Exception('找不到控制器【'.$ctrlClass_name.'】');
         }
     }
     static public function load($class){
@@ -33,8 +35,15 @@ class Thunder{
             return true;
         }else {
             $class = str_replace('\\', '/', $class);
-            $file = THUNDER .'/'. $class . '.php';
+//            dump($class);
+            $class_arr = explode('/',$class);
+
+            $file = ($class_arr[0] =='app' && $class_arr[1]=='model')?
+			 THUNDER .'/'. $class . '.php':
+
+            CORE .'/'. $class . '.php';
             if (is_file($file)) {
+//				dump($file);
                 include $file;
                 self::$classMap[$class] = $class;
             } else {
@@ -42,24 +51,5 @@ class Thunder{
             }
         }
     }
-    public function assign($name,$value){
-        $this->assign[$name] = $value;
-    }
-    public function display($view=''){
-        if(empty($view)){
-            $route = new route();
-            $view = $route->action;
-        }
-        $view = $view.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
-        $view_file = APP.'/views/'.$view;
-        if(is_file($view_file)){
-            $loader = new \Twig_Loader_Filesystem(APP.'/views');
-            $twig = new \Twig_Environment($loader, array(
-                'cache' => THUNDER.'/log/twig',
-                'debug'=>DEBUG
-            ));
-            $template = $twig->load($view);
-            $template->display($this->assign?$this->assign:array());
-        }
-    }
+
 }

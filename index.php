@@ -23,5 +23,5 @@ include CORE.'/common/function.php';
 
 include CORE.'/thunder.php';
 
-spl_autoload_register('\core\thunder::load');
-\core\thunder::run();
+spl_autoload_register('\thunder::load');
+\thunder::run();

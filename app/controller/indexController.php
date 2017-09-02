@@ -1,7 +1,8 @@
 <?php
 namespace app\controller;
-use \core\Thunder;
-class indexController extends Thunder{
+use \thunder\View;
+class indexController{
+    use view;
     public function index(){
         $name = 'Thunder';
         $this->assign('title',$name);
@@ -9,29 +10,29 @@ class indexController extends Thunder{
         $this->display();
     }
     public function sql(){
-        $model = model('student');
-//        $model = model('teacher');
-        $res = $model->lists();
+       $model = model('student');
+//         $model = model('teacher');
+         $res = $model->lists();
+//       $res = $model->test();
 //        $res = $model->getOne(1);
 //        $data = array('name'=>'ssssss');
 //        $res = $model->setOne(1,$data);
 //        $res = $model->delOne(1);
-        dump($res);
+         dump($res);
     }
     public function ses(){
-        $session = new \core\lib\session;
+        $session = new \thunder\session;
         $session->set('name','bbb');
 //        $session->del('name');
     }
     public function ses1(){
-        $session = new \core\lib\session;
+        $session = new \thunder\session;
         $res = $session->get('name');
         dump($res);
     }
-    public function test1(){
+    public function add(){
         $m = model('student');
         $t1 = microtime_float();
-        $res = $m->lists();
 //        $res = $m->destroy(88);
         $data = [
             ['name'=>'n1'],
@@ -45,11 +46,10 @@ class indexController extends Thunder{
             ['name'=>'n9'],
             ['name'=>'n10']
         ];
-//        for($i = 0;$i<100;$i++){
-//            $res = $m->add($data);
-//        }
+        for($i = 0;$i<100;$i++){
+            $res = $m->add($data);
+        }
         dump(microtime_float()-$t1);
-        dump($res);
 
     }
     public function fulsh(){

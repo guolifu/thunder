@@ -134,7 +134,7 @@ function model($name=''){
     $model_path = '\\app\model\\'.$name.'Model';
     return (class_exists($model_path))?
         new $model_path :
-        new core\lib\Model($name) ;
+        new \thunder\Model($name) ;
 }
 function microtime_float(){
     list($usec, $sec) = explode(" ", microtime());

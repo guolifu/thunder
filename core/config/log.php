@@ -1,6 +1,6 @@
 <?php
 return array(
-    'DRIVE'=>'file',
+    'DRIVE'=>'File',
     'OPTION'=>array(
       'PATH'=>THUNDER.'/log/',
     ),
