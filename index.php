@@ -1,4 +1,5 @@
 <?php
+header("Content-type:text/html;charset=utf-8");
 define('THUNDER',realpath('./'));
 define('CORE',THUNDER.'/core');
 define('APP',THUNDER.'/app');
