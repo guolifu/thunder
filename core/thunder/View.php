@@ -8,13 +8,15 @@ trait View{
     public function display($view=''){
         if(empty($view)){
             $route = new route();
-            $view = $route->action;
-            $view = $view.'/'.$view.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
+            $c = $route->ctrl;
+            $a = $route->action;
+            $view = $c.'/'.$a.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
 
         }else{
             $view = $view.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
         }
         $view_file = APP.'/views/'.$view;
+
         if(is_file($view_file)){
             $loader = new \Twig_Loader_Filesystem(APP.'/views');
             $twig = new \Twig_Environment($loader, array(
@@ -23,6 +25,8 @@ trait View{
             ));
             $template = $twig->load($view);
             $template->display($this->assign?$this->assign:array());
+        }else{
+            throw new \Exception('找不到模版【'.$view_file.'】');
         }
     }
 }
