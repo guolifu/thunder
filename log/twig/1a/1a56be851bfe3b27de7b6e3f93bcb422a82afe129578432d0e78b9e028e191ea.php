@@ -228,6 +228,6 @@ class __TwigTemplate_361bb5385d1a8acce6db49a4edbdabc088e3be94f1ffe8a9696227e2bb5
 </div>
 </body>
 </html>
-", "layout.html", "D:\\phpStudy\\WWW\\thunder\\app\\views\\layout.html");
+", "layout.html", "D:\\phpStudy\\WWW\\thunder2.0\\app\\views\\layout.html");
     }
 }

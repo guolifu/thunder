@@ -57,11 +57,52 @@ class indexController{
         $m->flushall();
     }
     public function upload(){
-        dump(input('get.b'));
-        dump(input('post.'));
-        dump(IS_GET);
-        dump(IS_POST);
+        if(IS_POST){
+            $up = new \thunder\Upload();
+            //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
+            $up -> set("path", "./uploads/images/");
+            $up -> set("maxsize", 2000000);
+            $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+            $up -> set("israndname", false);
+            if($up -> upload("photo")) {
+                echo '<pre>';
+                //获取上传后文件名子
+                var_dump($up->getFileName());
+                echo '</pre>';
+
+            } else {
+                echo '<pre>';
+                //获取上传失败以后的错误提示
+                var_dump($up->getErrorMsg());
+                echo '</pre>';
+            }
+        }
+
         $this->display();
+    }
+    public function verify(){
+        header('Content-type:image/png');
+        $im = imagecreate($x=100,$y=50);
+        $bg = imagecolorallocate($im, 243,251,254); //设置画布的背景为白色
+        $black = imagecolorallocate($im, rand(0,255), rand(0,255), rand(0,255)); //设置文字颜色
+        $string = "2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY"; //在图像中输出的字符
+//3.字符串截取长度
+        $count=4;
+        $string = str_shuffle($string);
+//4.随机截取字符串，取其中的一部分字符串
+        $string=substr($string,0,$count);
+        //干扰线
+        for ($i=0;$i<8;$i++){
+            $lineColor = imagecolorallocate($im,rand(0,255),rand(0,255),rand(0,255));
+            imageline ($im,rand(0,$x),0,rand(0,$x),$y,$lineColor);
+        }
+        //干扰点
+        for ($i=0;$i<250;$i++){
+            imagesetpixel($im,rand(0,$x),rand(0,$y),$black);
+        }
+        imagestring($im,6,$x/2-$x/8, $y/2-$y/16, $string, $black); //水平的将字符串输出到图像中
+        imagepng($im);
+        imagedestroy($im);
     }
 
 
