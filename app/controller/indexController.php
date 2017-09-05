@@ -93,4 +93,11 @@ class indexController{
         header('Location:./index?login=1');
         $this->display();
     }
+    public function url(){
+        $name = 'Thunder';
+
+        $this->assign('name',$name);
+
+        $this->display();
+    }
 }
