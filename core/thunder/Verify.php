@@ -4,14 +4,12 @@ class Verify{
     protected $config =	array(
         'codeSet'   =>  '2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY',             // 验证码字符集合
         'expire'    =>  1800,            // 验证码过期时间（s）
-        'useImgBg'  =>  false,           // 使用背景图片
-        'fontSize'  =>  25,              // 验证码字体大小(px)
+        'fontSize'  =>  5,              // 验证码字体大小(px)
         'useCurve'  =>  true,            // 是否画混淆曲线
         'useNoise'  =>  true,            // 是否添加杂点
         'imageH'    =>  50,               // 验证码图片高度
         'imageW'    =>  100,               // 验证码图片宽度
         'length'    =>  5,               // 验证码位数
-        'fontttf'   =>  '',              // 验证码字体，不设置随机获取
         'bg'        =>  array(243, 251, 254),  // 背景颜色
         'reset'     =>  true,           // 验证成功后是否重置
     );
@@ -21,19 +19,42 @@ class Verify{
     public function __get($name) {
         return $this->config[$name];
     }
+    public function __set($name,$value){
+        if(isset($this->config[$name])) {
+            $this->config[$name]    =   $value;
+        }
+    }
+    public function __isset($name){
+        return isset($this->config[$name]);
+    }
 
+    public function check($code){
+        $secode = session()->get('secode');
+        if(empty($code) || empty($secode)) {
+            return false;
+        }
+        /*session 过期*/
+        if(NOW_TIME - $secode['verify_time'] > $this->expire) {
+            session()->del('secode');
+            return false;
+        }
+        if($secode['verify_code'] == strtoupper($code)){
+            $this->reset && session()->del('secode');
+            return true;
+        }
+    }
     public function create(){
         header('Content-type:image/png');
 
-        $im = $this->_image = imagecreate($x=100,$y=50);
+        $im = $this->_image = imagecreate($x=$this->imageW,$y=$this->imageH);
         imagecolorallocate($this->_image, $this->bg[0], $this->bg[1], $this->bg[2]);
         $this->_color = imagecolorallocate($this->_image, mt_rand(1,150), mt_rand(1,150), mt_rand(1,150));
-        $string = "2345678abcdefhijkmnpqrstuvwxyzABCDEFGHJKLMNPQRTUVWXY"; //在图像中输出的字符
+        $string = $this->codeSet;
 //3.字符串截取长度
         $count=$this->length;
         $string = str_shuffle($string);
 //4.随机截取字符串，取其中的一部分字符串
-        $string=substr($string,0,$count);
+        $code=substr($string,0,$count);
         if ($this->useCurve) {
             // 绘干扰线
             $this->_writeCurve();
@@ -43,11 +64,18 @@ class Verify{
             $this->_writeNoise();
         }
 
-
-        imagestring($im,6,$x/2-$x/8, $y/2-$y/16, $string, $this->_color); //水平的将字符串输出到图像中
+        imagestring($im,6,$x/2-$x/mt_rand(3,10), $y/2-$y/16, $code, $this->_color); //水平的将字符串输出到图像中
         imagepng($im);
         imagedestroy($im);
+
+        // 保存验证码
+        $secode     =   array();
+        $secode['verify_code'] =  strtoupper($code); // 把校验码保存到session
+        $secode['verify_time'] = NOW_TIME;  // 验证码创建时间
+        session()->set('secode',$secode);
+
     }
+
     private function _writeCurve() {
         $px = $py = 0;
 

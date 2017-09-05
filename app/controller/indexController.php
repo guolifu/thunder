@@ -5,6 +5,8 @@ class indexController{
     use view;
     public function index(){
         $name = 'Thunder';
+        if(input('get.login'))
+        $name .= '_Login';
         $this->assign('title',$name);
         $this->assign('name',$name);
         $this->display();
@@ -21,13 +23,11 @@ class indexController{
          dump($res);
     }
     public function ses(){
-        $session = new \thunder\session;
-        $session->set('name','bbb');
-//        $session->del('name');
+        session()->set('name','bbb');
     }
     public function ses1(){
-        $session = new \thunder\session;
-        $res = $session->get('name');
+        $res = session()->get('secode');
+//        session()->del('secode');
         dump($res);
     }
     public function add(){
@@ -77,13 +77,20 @@ class indexController{
                 echo '</pre>';
             }
         }
-
         $this->display();
     }
-    public function verify(){
+    public function c_verify(){
         $v = new \thunder\Verify();
+        $v->length = 4;
+        $v->useNoise = false;
+        $v->useCurve = false;
         $v->create();
     }
-
-
+    public function verify(){
+        $code = input('post.code');
+        $v = new \thunder\Verify();
+        if($v->check($code))
+        header('Location:./index?login=1');
+        $this->display();
+    }
 }
