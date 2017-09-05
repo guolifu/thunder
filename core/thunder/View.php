@@ -2,11 +2,10 @@
 namespace thunder;
 trait View{
     public $assign;
-    public $replace = array(
-        'asset'    => __PUBLIC__
-    );
+    public $replace;
     public function assign($name,$value){
         $this->assign[$name] = $value;
+        $this->replace = Conf::get('tpl','TMPL_PARSE_STRING');
         $this->assign = array_merge($this->assign,$this->replace);
     }
     public function display($view=''){
