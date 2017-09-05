@@ -18,20 +18,35 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
         // line 1
         echo "<!DOCTYPE html>
 <html>
-<head lang=\"en\">
-    <meta charset=\"UTF-8\">
-    <title></title>
-</head>
-<body>
-<a href=\"";
-        // line 8
-        echo twig_escape_filter($this->env, (isset($context["asset"]) ? $context["asset"] : null), "html", null, true);
-        echo "\">
+<head>
+    <meta charset=\"utf-8\">
+    <title>Vue 测试</title>
     ";
-        // line 9
-        echo twig_escape_filter($this->env, (isset($context["asset"]) ? $context["asset"] : null), "html", null, true);
+        // line 6
+        $this->loadTemplate("header.html", "index/url.html", 6)->display($context);
+        // line 7
+        echo "</head>
+<body>
+<div id=\"app\">
+    <p>
+        ";
+        // line 13
         echo "
-</a>
+        {{ message }}
+        ";
+        echo "
+
+    </p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue!'
+        }
+    })
+</script>
 </body>
 </html>";
     }
@@ -48,7 +63,7 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
 
     public function getDebugInfo()
     {
-        return array (  32 => 9,  28 => 8,  19 => 1,);
+        return array (  34 => 13,  28 => 7,  26 => 6,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -63,14 +78,29 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
     {
         return new Twig_Source("<!DOCTYPE html>
 <html>
-<head lang=\"en\">
-    <meta charset=\"UTF-8\">
-    <title></title>
+<head>
+    <meta charset=\"utf-8\">
+    <title>Vue 测试</title>
+    {% include \"header.html\" %}
 </head>
 <body>
-<a href=\"{{ asset }}\">
-    {{ asset }}
-</a>
+<div id=\"app\">
+    <p>
+        {% verbatim %}
+        {{ message }}
+        {% endverbatim %}
+
+    </p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue!'
+        }
+    })
+</script>
 </body>
 </html>", "index/url.html", "E:\\WWW\\thunder\\app\\views\\Index\\url.html");
     }

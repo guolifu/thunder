@@ -60,9 +60,9 @@ class indexController{
         if(IS_POST){
             $up = new \thunder\Upload();
             //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
-            $up -> set("path", "./uploads/images/");
+            $up -> set("path",__UPLOAD__.'/images');
             $up -> set("maxsize", 2000000);
-            $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+            $up -> set("allowtype", array("gif", "png", "jpg","jpeg",'xls'));
             $up -> set("israndname", false);
             if($up -> upload("photo")) {
                 echo '<pre>';

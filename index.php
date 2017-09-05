@@ -6,7 +6,7 @@ define('_PHP_FILE_',rtrim($_SERVER['SCRIPT_NAME'],'/'));
 $_root  =   rtrim(dirname(_PHP_FILE_),'/');
 define('__ROOT__',  (($_root=='/' || $_root=='\\')?'':$_root));
 define('__PUBLIC__',  __ROOT__.'/public');
-define('__UPLOAD__',  __PUBLIC__.'/uploads');
+define('__UPLOAD__','./public/uploads');
 define('THUNDER',realpath('./'));
 define('CORE',THUNDER.'/core');
 define('APP',THUNDER.'/app');
