@@ -5,6 +5,8 @@ class indexController{
     use view;
     public function index(){
         $name = 'Thunder';
+        if(input('get.login'))
+        $name .= '_Login';
         $this->assign('title',$name);
         $this->assign('name',$name);
         $this->display();
@@ -21,13 +23,11 @@ class indexController{
          dump($res);
     }
     public function ses(){
-        $session = new \thunder\session;
-        $session->set('name','bbb');
-//        $session->del('name');
+        session()->set('name','bbb');
     }
     public function ses1(){
-        $session = new \thunder\session;
-        $res = $session->get('name');
+        $res = session()->get('secode');
+//        session()->del('secode');
         dump($res);
     }
     public function add(){
@@ -60,9 +60,9 @@ class indexController{
         if(IS_POST){
             $up = new \thunder\Upload();
             //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
-            $up -> set("path", "./uploads/images/");
+            $up -> set("path",__UPLOAD__.'/images');
             $up -> set("maxsize", 2000000);
-            $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
+            $up -> set("allowtype", array("gif", "png", "jpg","jpeg",'xls'));
             $up -> set("israndname", false);
             if($up -> upload("photo")) {
                 echo '<pre>';
@@ -77,13 +77,27 @@ class indexController{
                 echo '</pre>';
             }
         }
+        $this->display();
+    }
+    public function c_verify(){
+        $v = new \thunder\Verify();
+        $v->length = 4;
+        $v->useNoise = false;
+        $v->useCurve = false;
+        $v->create();
+    }
+    public function verify(){
+        $code = input('post.code');
+        $v = new \thunder\Verify();
+        if($v->check($code))
+        header('Location:./index?login=1');
+        $this->display();
+    }
+    public function url(){
+        $name = 'Thunder';
+
+        $this->assign('name',$name);
 
         $this->display();
     }
-    public function verify(){
-        $v = new \thunder\Verify();
-        $v->create();
-    }
-
-
 }

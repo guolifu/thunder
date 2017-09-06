@@ -289,3 +289,6 @@ function thunder_filter(&$value){
         $value .= ' ';
     }
 }
+function session(){
+    return new \thunder\Session();
+}
