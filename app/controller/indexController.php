@@ -96,7 +96,7 @@ class indexController{
     public function url(){
         $name = 'Thunder';
 
-        $this->assign('name',$name) ;
+        $this->assign('name',$name);
 
         $this->display();
     }
