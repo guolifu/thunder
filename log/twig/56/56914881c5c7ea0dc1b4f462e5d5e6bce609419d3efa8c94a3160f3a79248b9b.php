@@ -17,7 +17,7 @@ class __TwigTemplate_c8cc5427f177cf9a73554a881ebd33cd959bf2dab421b2d3fa0f70f5a4c
     {
         // line 1
         echo "<script src=\"";
-        echo twig_escape_filter($this->env, (isset($context["asset"]) ? $context["asset"] : null), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["__PUBLIC__"]) ? $context["__PUBLIC__"] : null), "html", null, true);
         echo "/node_modules/_vue@2.4.2@vue/dist/vue.min.js\"></script>";
     }
 
@@ -46,6 +46,6 @@ class __TwigTemplate_c8cc5427f177cf9a73554a881ebd33cd959bf2dab421b2d3fa0f70f5a4c
 
     public function getSourceContext()
     {
-        return new Twig_Source("<script src=\"{{ asset }}/node_modules/_vue@2.4.2@vue/dist/vue.min.js\"></script>", "header.html", "E:\\WWW\\thunder\\app\\views\\header.html");
+        return new Twig_Source("<script src=\"{{ __PUBLIC__ }}/node_modules/_vue@2.4.2@vue/dist/vue.min.js\"></script>", "header.html", "E:\\WWW\\thunder-master\\app\\views\\header.html");
     }
 }

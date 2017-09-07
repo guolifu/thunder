@@ -27,6 +27,7 @@ trait View{
                 'debug'=>DEBUG
             ));
             $template = $twig->load($view);
+            $twig->addGlobal('asset', new TwigAsset);
             $template->display($this->assign?$this->assign:array());
         }else{
             throw new \Exception('找不到模版【'.$view_file.'】');

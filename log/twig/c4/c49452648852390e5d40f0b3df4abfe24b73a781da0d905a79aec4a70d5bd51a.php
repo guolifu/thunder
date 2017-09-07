@@ -30,7 +30,15 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
 <div id=\"app\">
     <p>
         ";
-        // line 13
+        // line 11
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "css", array(0 => "1.css"), "method"), "html", null, true);
+        echo "<br/>
+        ";
+        // line 12
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "2.js"), "method"), "html", null, true);
+        echo "
+        ";
+        // line 15
         echo "
         {{ message }}
         ";
@@ -63,7 +71,7 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
 
     public function getDebugInfo()
     {
-        return array (  34 => 13,  28 => 7,  26 => 6,  19 => 1,);
+        return array (  42 => 15,  38 => 12,  34 => 11,  28 => 7,  26 => 6,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -86,6 +94,8 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
 <body>
 <div id=\"app\">
     <p>
+        {{ asset.css('1.css') }}<br/>
+        {{ asset.js('2.js') }}
         {% verbatim %}
         {{ message }}
         {% endverbatim %}
@@ -102,6 +112,6 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
     })
 </script>
 </body>
-</html>", "index/url.html", "E:\\WWW\\thunder\\app\\views\\Index\\url.html");
+</html>", "index/url.html", "E:\\WWW\\thunder-master\\app\\views\\Index\\url.html");
     }
 }
