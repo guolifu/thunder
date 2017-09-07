@@ -49,11 +49,22 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
         echo "    </p>
 </div>
 
+<div id=\"app-2\">
+  <span v-bind:title=\"message\">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </span>
+</div>
 <script>
-    new Vue({
+    var app = new Vue({
         el: '#app',
         data: {
-            message: 'Vue!'
+            message: 'Hello Vue!'
+        }
+    })
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: '页面加载于 ' + new Date().toLocaleString()
         }
     })
 </script>
@@ -103,7 +114,7 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
         {% endverbatim %}
         <br>
         {#
-{%for student in students%}
+        {%for student in students%}
         {{student.name}}
         <br>
         {% endfor %}
@@ -111,11 +122,22 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
     </p>
 </div>
 
+<div id=\"app-2\">
+  <span v-bind:title=\"message\">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </span>
+</div>
 <script>
-    new Vue({
+    var app = new Vue({
         el: '#app',
         data: {
-            message: 'Vue!'
+            message: 'Hello Vue!'
+        }
+    })
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: '页面加载于 ' + new Date().toLocaleString()
         }
     })
 </script>

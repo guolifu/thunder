@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="10ee35de-31f0-4bd2-974f-3370090db230" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/twig/c4/c49452648852390e5d40f0b3df4abfe24b73a781da0d905a79aec4a70d5bd51a.php" afterPath="$PROJECT_DIR$/log/twig/c4/c49452648852390e5d40f0b3df4abfe24b73a781da0d905a79aec4a70d5bd51a.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/indexController.php" afterPath="$PROJECT_DIR$/app/controller/indexController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/20170907/log.php" afterPath="$PROJECT_DIR$/log/20170907/log.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Index/url.html" afterPath="$PROJECT_DIR$/app/views/Index/url.html" />
     </list>
@@ -123,8 +122,8 @@
       <file leaf-file-name="url.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/Index/url.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7368421" vertical-offset="35" max-vertical-offset="1000">
-              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.69924814" vertical-offset="535" max-vertical-offset="1275">
+              <caret line="40" column="59" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -455,7 +454,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="886" extended-state="0" />
+    <frame x="-8" y="-8" width="1456" height="886" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -895,8 +894,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Index/url.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7368421" vertical-offset="35" max-vertical-offset="1000">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.69924814" vertical-offset="535" max-vertical-offset="1275">
+          <caret line="40" column="59" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="59" />
           <folding />
         </state>
       </provider>
