@@ -1,2 +1,2 @@
 Thunder.
-php>5.4
+php>5.4...
