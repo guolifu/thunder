@@ -95,8 +95,10 @@ class indexController{
     }
     public function url(){
         $name = 'Thunder';
-
+        $m = model('student');
+        $res = $m->lists();
         $this->assign('name',$name);
+        $this->assign('students',$res);
 
         $this->display();
     }

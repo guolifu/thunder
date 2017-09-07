@@ -43,8 +43,10 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
         {{ message }}
         ";
         echo "
-
-    </p>
+        <br>
+        ";
+        // line 23
+        echo "    </p>
 </div>
 
 <script>
@@ -71,7 +73,7 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
 
     public function getDebugInfo()
     {
-        return array (  42 => 15,  38 => 12,  34 => 11,  28 => 7,  26 => 6,  19 => 1,);
+        return array (  49 => 23,  42 => 15,  38 => 12,  34 => 11,  28 => 7,  26 => 6,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -99,7 +101,13 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
         {% verbatim %}
         {{ message }}
         {% endverbatim %}
-
+        <br>
+        {#
+{%for student in students%}
+        {{student.name}}
+        <br>
+        {% endfor %}
+        #}
     </p>
 </div>
 
@@ -112,6 +120,6 @@ class __TwigTemplate_c345dd331ed8b9b12fc6b1112ab0713916947132f280a09af5848262df8
     })
 </script>
 </body>
-</html>", "index/url.html", "E:\\WWW\\thunder-master\\app\\views\\Index\\url.html");
+</html>", "index/url.html", "E:\\WWW\\thunder\\app\\views\\Index\\url.html");
     }
 }
