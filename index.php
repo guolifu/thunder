@@ -29,7 +29,6 @@ if(DEBUG){
 //sss();
 include CORE.'/common/function.php';
 
-include CORE.'/thunder.php';
+require CORE.'/thunder.php';
 
-spl_autoload_register('\thunder::load');
-\thunder::run();
+require CORE.'/start.php';

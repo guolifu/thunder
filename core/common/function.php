@@ -121,7 +121,7 @@ function http_method()
 function json($array)
 {
     header('Content-Type:application/json; charset=utf-8');
-    echo json_encode($array);
+    return json_encode($array);
 }
 
 function show404()

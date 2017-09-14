@@ -1,5 +1,5 @@
 <?php
-
+namespace thunder;
 class Thunder{
     public static $classMap = array();
     public $assign;
@@ -27,7 +27,10 @@ class Thunder{
             }
 
             /*调用方法*/
-            $controller->$action();
+            $data = $controller->$action();
+
+            Response::send($data);
+
             \thunder\Log::log('ctrl:'.$ctrlClass_name.'=>'.'action:'.$action);
         }else{
             throw new \Exception('找不到控制器【'.$ctrlClass_name.'】');

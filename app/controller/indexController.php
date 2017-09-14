@@ -102,4 +102,15 @@ class indexController{
 
         $this->display();
     }
+    public function num(){
+        return 1;
+    }
+    public function str(){
+        return 'str';
+    }
+    public function json(){
+        return ['data'=>'json','status'=>1];
+//        return ['data'=>'json','status'=>1,'to_array'=>1];
+    }
+
 }
