@@ -1,7 +1,7 @@
 <?php
 namespace app;
 use \thunder\Model;
-class StudentModel extends Model{
+class Student extends Model{
     public function test(){
         return 1;
     }
