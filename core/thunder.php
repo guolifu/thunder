@@ -11,7 +11,7 @@ class Thunder{
         define('REQUEST_METHOD',$_SERVER['REQUEST_METHOD']);
         define('IS_GET',        REQUEST_METHOD =='GET' ? true : false);
         define('IS_POST',       REQUEST_METHOD =='POST' ? true : false);
-        define('EXT',Conf::get('tpl','TMPL_TEMPLATE_SUFFIX'));
+        define('TPL',Conf::get('tpl','TMPL_TEMPLATE_SUFFIX'));
 
         $route = new \thunder\Route();
         $module_name = ucfirst($route->module);
@@ -51,10 +51,9 @@ class Thunder{
             $class = str_replace('\\', '/', $class);
             $class_arr = explode('/',$class);
 
-            $file = ($class_arr[0] =='app' && $class_arr[1]=='model')?
-			 THUNDER .'/'. $class . '.php':
-
-            CORE .'/'. $class . '.php';
+            $file = ($class_arr[0] =='app')?
+            THUNDER .'/'. $class . EXT:
+            CORE .'/'. $class . EXT;
             if (is_file($file)) {
                 include $file;
                 self::$classMap[$class] = $class;

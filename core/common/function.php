@@ -131,7 +131,7 @@ function show404()
     exit();
 }
 function model($name=''){
-    $model_path = '\\app\model\\'.ucfirst($name).'Model';
+    $model_path = '\\app\\'.ucfirst($name).'Model';
     return (class_exists($model_path))?
         new $model_path :
         new \thunder\Model($name);

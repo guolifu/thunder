@@ -12,6 +12,7 @@ define('CORE',THUNDER.'/core');
 define('APP',THUNDER.'/app');
 define('MODULE','app');
 define('CONF_PATH',CORE.'/config');
+define('EXT','.php');
 
 include "vendor/autoload.php";
 define('DEBUG',true);

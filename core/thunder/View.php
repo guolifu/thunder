@@ -20,7 +20,7 @@ trait View{
         if(empty($view)){
             /*默认当前页*/
             $a = $route->action;
-            $view = $c.'/'.$a.EXT;
+            $view = $c.'/'.$a.TPL;
         }else{
             $view_arr = explode('/',$view);
             $v_n = count($view_arr);
@@ -28,18 +28,18 @@ trait View{
             switch($v_n){
                 /*同级目录下*/
                 case '1' :{
-                    $view = $c.'/'.$view_arr[0].EXT;
+                    $view = $c.'/'.$view_arr[0].TPL;
                     break;
                 }
                 /*跨控制器读取页面*/
                 case '2' :{
-                    $view = $view_arr[0].'/'.$view_arr[1].EXT;
+                    $view = $view_arr[0].'/'.$view_arr[1].TPL;
                     break;
                 }
                 /*跨模块读取页面*/
                 case '3' :{
                     $m = ucfirst($view_arr[0]);
-                    $view = $view_arr[1].'/'.$view_arr[2].EXT;
+                    $view = $view_arr[1].'/'.$view_arr[2].TPL;
                     break;
                 }
             }

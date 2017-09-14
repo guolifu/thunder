@@ -1,5 +1,5 @@
 <?php
-namespace app\model;
+namespace app;
 use \thunder\Model;
 class StudentModel extends Model{
     public function test(){
