@@ -34,3 +34,28 @@ class StudentController{<br>
 3. controller method refactoring <br>
 4. join the API development model, the controller return array automatically converted to JSON format. <br>
 5. model layer is reconstructed, and model layer is separated into independent layer: <br>
+<hr>
+demo:<br>
+
+namespace app;<br>
+use \thunder\Model;<br>
+class Student extends Model{<br>
+    public function test(){<br>
+        return 'test!';<br>
+    }<br>
+<br>
+
+
+6. view mechanism optimization, support cross controller, cross module output page <br>
+<hr>
+namespace home\controller;<br>
+use \thunder\View;<br>
+class StudentController{<br>
+    use View;<br>
+    public function index(){<br>
+        $this->display();<br>
+        $this->display('index1');<br>
+        $this->display('index/url');<br>
+        $this->display('api/index/views');<br>
+    }<br>
+}<br>
