@@ -40,8 +40,9 @@ demo:<br>
 namespace app;<br>
 use \thunder\Model;<br>
 class Student extends Model{<br>
-    public function test(){<br>
-        return 'test!';<br>
+    &nbsp;public function test(){<br>
+        &nbsp;&nbsp;return 'test!';<br>
+    &nbsp;}<br>
     }<br>
 <br>
 
@@ -51,11 +52,11 @@ class Student extends Model{<br>
 namespace home\controller;<br>
 use \thunder\View;<br>
 class StudentController{<br>
-    use View;<br>
-    public function index(){<br>
-        $this->display();<br>
-        $this->display('index1');<br>
-        $this->display('index/url');<br>
-        $this->display('api/index/views');<br>
-    }<br>
+    &nbsp;use View;<br>
+    &nbsp;public function index(){<br>
+        &nbsp;&nbsp;$this->display();<br>
+        &nbsp;&nbsp;$this->display('index1');<br>
+        &nbsp;&nbsp;$this->display('index/url');<br>
+        &nbsp;&nbsp;$this->display('api/index/views');<br>
+    &nbsp;}<br>
 }<br>
