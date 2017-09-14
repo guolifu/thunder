@@ -10,9 +10,9 @@ demo:<br>
 namespace app;<br>
 use \thunder\Model;<br>
 class Student extends Model{<br>
-    public function test(){<br>
-        return 'test!';<br>
-    }<br>
+    　public function test(){<br>
+        　　　return 'test!';<br>
+    　}<br>
 <hr>
 6.视图机制优化，支持跨控制器，跨模块输出页面<br>
 
@@ -21,13 +21,13 @@ demo:<br>
 namespace home\controller;<br>
 use \thunder\View;<br>
 class StudentController{<br>
-    use View;<br>
-    public function index(){<br>
-        $this->display();<br>
-        $this->display('index1');<br>
-        $this->display('index/url');<br>
-        $this->display('api/index/views');<br>
-    }<br>
+    　use View;<br>
+    　public function index(){<br>
+        　　　$this->display();<br>
+        　　　$this->display('index1');<br>
+        　　　$this->display('index/url');<br>
+        　　　$this->display('api/index/views');<br>
+    　}<br>
 }<br>
 1. fixed the routing rule <br>
 2. increased the multi module mechanism <br>
@@ -40,9 +40,9 @@ demo:<br>
 namespace app;<br>
 use \thunder\Model;<br>
 class Student extends Model{<br>
-    　　public function test(){<br>
-        　　return 'test!';<br>
-    　　}<br>
+    　public function test(){<br>
+        　　　return 'test!';<br>
+    　}<br>
     }<br>
 <br>
 
@@ -52,11 +52,11 @@ class Student extends Model{<br>
 namespace home\controller;<br>
 use \thunder\View;<br>
 class StudentController{<br>
-    　　use View;<br>
-    　　public function index(){<br>
-        　　$this->display();<br>
-        　　$this->display('index1');<br>
-        　　$this->display('index/url');<br>
-        　　$this->display('api/index/views');<br>
-    　　}<br>
+    　use View;<br>
+    　public function index(){<br>
+        　　　$this->display();<br>
+        　　　$this->display('index1');<br>
+        　　　$this->display('index/url');<br>
+        　　　$this->display('api/index/views');<br>
+    　}<br>
 }<br>
