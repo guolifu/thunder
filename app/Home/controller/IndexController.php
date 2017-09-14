@@ -20,7 +20,7 @@ class IndexController{
 //        $data = array('name'=>'ssssss');
 //        $res = $model->setOne(1,$data);
 //        $res = $model->delOne(1);
-         dump($res);
+         return ($res);
     }
     public function ses(){
         session()->set('name','bbb');

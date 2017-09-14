@@ -131,10 +131,10 @@ function show404()
     exit();
 }
 function model($name=''){
-    $model_path = '\\app\model\\'.$name.'Model';
+    $model_path = '\\app\model\\'.ucfirst($name).'Model';
     return (class_exists($model_path))?
         new $model_path :
-        new \thunder\Model($name) ;
+        new \thunder\Model($name);
 }
 function microtime_float(){
     list($usec, $sec) = explode(" ", microtime());
