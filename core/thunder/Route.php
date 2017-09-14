@@ -1,6 +1,7 @@
 <?php
 namespace thunder;
 class Route{
+    public $module;
     public $ctrl;
     public $action;
     public $path;
@@ -33,28 +34,36 @@ class Route{
             //去掉多余的分隔符
             $path = explode('/', trim($path[0], '/'));
             if (isset($path[0]) && $path[0]) {
-                $this->ctrl = $path[0];
+                $this->module = $path[0];
+            } else {
+                $this->module = $route['DEFAULT_MODULE'];
+            }
+            unset($path[0]);
+
+            if (isset($path[1]) && $path[1]) {
+                $this->ctrl = $path[1];
             } else {
                 $this->ctrl = $route['DEFAULT_CTRL'];
             }
-            unset($path[0]);
+            unset($path[1]);
+
             //检测是否包含路由缩写
             if (isset($route['ROUTE'][$this->ctrl])) {
                 $this->action = $route['ROUTE'][$this->ctrl][1];
                 $this->ctrl = $route['ROUTE'][$this->ctrl][0];
             } else {
-                if (isset($path[1]) && $path[1]) {
-                    $have = strstr($path[1], '?', true);
+                if (isset($path[2]) && $path[2]) {
+                    $have = strstr($path[2], '?', true);
                     if ($have) {
                         $this->action = $have;
                     } else {
-                        $this->action = $path[1];
+                        $this->action = $path[2];
                     }
 
                 } else {
                     $this->action = $route['DEFAULT_ACTION'];
                 }
-                unset($path[1]);
+                unset($path[2]);
             }
 
             $this->path = array_merge($path);
@@ -68,6 +77,7 @@ class Route{
             }
         } else {
 
+            $this->module = conf::get('route','DEFAULT_MODULE');
             $this->ctrl = conf::get('route','DEFAULT_CTRL');
             $this->action = conf::get('route','DEFAULT_ACTION');
         }

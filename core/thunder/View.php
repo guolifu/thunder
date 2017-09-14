@@ -3,25 +3,52 @@ namespace thunder;
 trait View{
     public $assign;
     public $replace;
+    public function __construct(){
+        $this->replace = Conf::get('tpl','TMPL_PARSE_STRING');
+        $this->assign = $this->replace;
+    }
+
     public function assign($name,$value){
         $this->assign[$name] = $value;
-        $this->replace = Conf::get('tpl','TMPL_PARSE_STRING');
         $this->assign = array_merge($this->assign,$this->replace);
     }
     public function display($view=''){
+        $route = new route();
+        $m = $route->module;
+        $c = $route->ctrl;
+
         if(empty($view)){
-            $route = new route();
-            $c = $route->ctrl;
+            /*默认当前页*/
             $a = $route->action;
-            $view = $c.'/'.$a.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
-
+            $view = $c.'/'.$a.EXT;
         }else{
-            $view = $view.Conf::get('tpl','TMPL_TEMPLATE_SUFFIX');
-        }
-        $view_file = APP.'/views/'.$view;
+            $view_arr = explode('/',$view);
+            $v_n = count($view_arr);
 
+            switch($v_n){
+                /*同级目录下*/
+                case '1' :{
+                    $view = $c.'/'.$view_arr[0].EXT;
+                    break;
+                }
+                /*跨控制器读取页面*/
+                case '2' :{
+                    $view = $view_arr[0].'/'.$view_arr[1].EXT;
+                    break;
+                }
+                /*跨模块读取页面*/
+                case '3' :{
+                    $m = ucfirst($view_arr[0]);
+                    $view = $view_arr[1].'/'.$view_arr[2].EXT;
+                    break;
+                }
+            }
+        }
+        $PRE_PATH = APP.'/'.$m.'/views/';
+
+        $view_file = $PRE_PATH.$view;
         if(is_file($view_file)){
-            $loader = new \Twig_Loader_Filesystem(APP.'/views');
+            $loader = new \Twig_Loader_Filesystem($PRE_PATH);
             $twig = new \Twig_Environment($loader, array(
                 'cache' => THUNDER.'/log/twig',
                 'debug'=>DEBUG

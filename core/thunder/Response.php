@@ -24,7 +24,7 @@ class Response{
         switch($dataType){
             case 'array' :{
                 $data =
-                    (array_key_exists('to_array',$data)&&$data['to_array']==1)?
+                    (array_key_exists('to_array',$data) && $data['to_array']==1)?
                         self::getData():
                         $data = json($data);
                 break;

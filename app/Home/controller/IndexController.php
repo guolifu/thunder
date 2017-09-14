@@ -1,7 +1,7 @@
 <?php
-namespace app\controller;
+namespace home\controller;
 use \thunder\View;
-class indexController{
+class IndexController{
     use view;
     public function index(){
         $name = 'Thunder';

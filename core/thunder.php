@@ -11,12 +11,19 @@ class Thunder{
         define('REQUEST_METHOD',$_SERVER['REQUEST_METHOD']);
         define('IS_GET',        REQUEST_METHOD =='GET' ? true : false);
         define('IS_POST',       REQUEST_METHOD =='POST' ? true : false);
-        $route = new \thunder\Route();
+        define('EXT',Conf::get('tpl','TMPL_TEMPLATE_SUFFIX'));
 
-        $ctrlClass_name = $route->ctrl;
+        $route = new \thunder\Route();
+        $module_name = ucfirst($route->module);
+        $ctrlClass_name = ucfirst($route->ctrl);
         $action = $route->action;
-        $controller_file = APP.'/controller/'.$ctrlClass_name.'Controller.php';
-        $ctrlClass = '\\'.MODULE.'\controller\\'.$ctrlClass_name.'Controller';
+
+        $module_dir = APP.'/'.$module_name;
+        if(!is_dir($module_dir)){
+            throw new \Exception('找不到模块【'.$module_name.'】');
+        }
+        $controller_file = $module_dir.'/controller/'.$ctrlClass_name.'Controller.php';
+        $ctrlClass = '\\'.$module_name.'\controller\\'.$ctrlClass_name.'Controller';
         if(is_file($controller_file)){
             /*载入控制器文件*/
             include $controller_file;
