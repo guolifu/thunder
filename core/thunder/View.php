@@ -13,7 +13,7 @@ trait View{
         $this->assign = array_merge($this->assign,$this->replace);
     }
     public function display($view=''){
-        $route = new route();
+        $route = Route::get_instance();
         $m = $route->module;
         $c = $route->ctrl;
 

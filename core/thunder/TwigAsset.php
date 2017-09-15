@@ -8,5 +8,8 @@ class TwigAsset
     public function js($path){
         return __PUBLIC__.'/js/'.$path;
     }
+    public function route($path){
+        return Route::_get_pub_path($path);
+    }
 
 }

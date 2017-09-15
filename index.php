@@ -10,10 +10,14 @@ define('__UPLOAD__','./public/uploads');
 define('THUNDER',realpath('./'));
 define('CORE',THUNDER.'/core');
 define('APP',THUNDER.'/app');
+define('ROUTES',THUNDER.'/routes');
 define('MODULE','app');
 define('CONF_PATH',CORE.'/config');
 define('EXT','.php');
-
+define('NOW_TIME',      $_SERVER['REQUEST_TIME']);
+define('REQUEST_METHOD',$_SERVER['REQUEST_METHOD']);
+define('IS_GET',        REQUEST_METHOD =='GET' ? true : false);
+define('IS_POST',       REQUEST_METHOD =='POST' ? true : false);
 include "vendor/autoload.php";
 define('DEBUG',true);
 if(DEBUG){
@@ -27,7 +31,7 @@ if(DEBUG){
 }else{
     ini_set('display_errors','Off');
 }
-//sss();
+
 include CORE.'/common/function.php';
 
 require CORE.'/thunder.php';

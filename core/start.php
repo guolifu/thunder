@@ -7,6 +7,11 @@ namespace thunder;
 */
 spl_autoload_register('\thunder\thunder::load');
 /*
+ * 加载注册路由
+ * */
+include ROUTES.'/web.php';
+
+/*
  *
  * 执行
  *

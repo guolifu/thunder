@@ -2,18 +2,12 @@
 namespace thunder;
 class Thunder{
     public static $classMap = array();
-    public $assign;
     static public function run(){
-        session_start();
-
-        \thunder\Log::init();
-        define('NOW_TIME',      $_SERVER['REQUEST_TIME']);
-        define('REQUEST_METHOD',$_SERVER['REQUEST_METHOD']);
-        define('IS_GET',        REQUEST_METHOD =='GET' ? true : false);
-        define('IS_POST',       REQUEST_METHOD =='POST' ? true : false);
         define('TPL',Conf::get('tpl','TMPL_TEMPLATE_SUFFIX'));
+        session_start();
+        Log::init();
 
-        $route = new \thunder\Route();
+        $route = Route::get_instance();
         $module_name = ucfirst($route->module);
         $ctrlClass_name = ucfirst($route->ctrl);
         $action = $route->action;
@@ -38,7 +32,7 @@ class Thunder{
 
             Response::send($data);
 
-            \thunder\Log::log('ctrl:'.$ctrlClass_name.'=>'.'action:'.$action);
+            Log::log('ctrl:'.$ctrlClass_name.'=>'.'action:'.$action);
         }else{
             throw new \Exception('找不到控制器【'.$ctrlClass_name.'】');
         }

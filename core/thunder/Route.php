@@ -6,8 +6,24 @@ class Route{
     public $action;
     public $path;
     public $route;
+    private static $rules = [];
 
-    public function __construct()
+    private static $_instance;
+
+    private static $pub_path;
+
+    public static function get_instance(){
+        if( ! (self::$_instance instanceof self) ) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+    private function __clone()
+    {
+        //覆盖方法禁止外部clone
+    }
+
+    private function __construct()
     {
         /*获取 script_name */
         $SCRIPT_NAME = $_SERVER['SCRIPT_NAME'];
@@ -18,6 +34,7 @@ class Route{
         /*提取多余路径*/
         $before_SCRIPT_NAME = substr($SCRIPT_NAME,0,-$base_name_len);
 
+
         if(isset($_SERVER['REDIRECT_URL'])){
             /*多余路径长度*/
             $before_SCRIPT_NAME_LEN = strlen($before_SCRIPT_NAME);
@@ -26,45 +43,124 @@ class Route{
             /*提取路径*/
             $real_path = substr($_SERVER['REDIRECT_URL'],$before_SCRIPT_NAME_LEN,$PATH_ALL_LEN);
         }
-        $route = Conf::get('route');
-        if (isset($real_path)) {
-            $pathStr = str_replace($_SERVER['SCRIPT_NAME'], '', $real_path);
+
+        $this->route = Conf::get('route');
+
+        /*存在注册列表时查看*/
+        if(!empty(self::$rules) && isset($real_path)){
+            /*获取注册路由*/
+            $real_path = self::_get_route_path($real_path);
+        }
+
+
+        isset($real_path)?
+            $this->routine_routes($real_path):
+            $this->default_routes();
+
+    }
+    /*
+     * 获取注册路由
+     * */
+    public static function _get_route_path($path){
+        if(!empty(self::$rules))
+        $rules = self::$rules;
+
+        /*$path 为用户输入url，$rules_key 为规则键名*/
+        foreach($rules as $rule){
+            /*含param时*/
+            if($rule['param']){
+                $rules_key = str_replace('/','\/',$rule['real_rules'].'/');
+                $preg_rule = preg_match("/^$rules_key/",$path,$match);
+            }else{
+                $rules_key = str_replace('/','\/',$rule['real_rules']);
+                $preg_rule = preg_match("/^$rules_key$/",$path,$match);
+            }
+            /*匹配成功时*/
+            if($preg_rule){
+                $param = str_replace($match[0],'',$path);
+                $path = $rule['rules'].'/'.$param;
+            }
+
+        }
+
+        self::$pub_path = $rule['rules'];
+
+        return $path;
+    }
+/*
+ * 提供twig
+ * */
+    public static function _get_pub_path(){
+        return self::$pub_path;
+    }
+
+    public static function init($rules,$route){
+        $r = array();
+        /*解析传入路由*/
+        $analysis_rules = self::_analysis_route_path($rules,$route);
+        $r[$analysis_rules['real_rules']] = $analysis_rules;
+        self::$rules = array_merge(self::$rules,$r);
+//        dump(self::$rules);die;
+//        return new self($rules);
+    }
+
+
+    /*
+     *
+     * 解析路由
+     *
+     * */
+    public static function _analysis_route_path($rules,$route){
+        $rules_arr = explode('/',$rules);
+
+        $analysis_rules['rules'] = $route;
+
+        $analysis_rules['param'] = end($rules_arr)=='{param}' ? true : false;
+        if(end($rules_arr)=='{param}'){
+            array_pop($rules_arr);
+            $analysis_rules['real_rules'] = implode('/',$rules_arr);
+        }else{
+            $analysis_rules['real_rules'] = $rules;
+
+        }
+//        dump($analysis_rules);die;
+        return $analysis_rules;
+    }
+    /*
+     *
+     * 常规路由
+     *
+     * */
+    public function routine_routes($real_path){
+        $route = $this->route;
+
+        $pathStr = str_replace($_SERVER['SCRIPT_NAME'], '', $real_path);
             //丢掉?以及后面的参数
             $path = explode('?', $pathStr);
             //去掉多余的分隔符
             $path = explode('/', trim($path[0], '/'));
-            if (isset($path[0]) && $path[0]) {
-                $this->module = $path[0];
-            } else {
+             (isset($path[0]) && $path[0])?
+                $this->module = $path[0] :
                 $this->module = $route['DEFAULT_MODULE'];
-            }
+
             unset($path[0]);
 
-            if (isset($path[1]) && $path[1]) {
-                $this->ctrl = $path[1];
-            } else {
+             (isset($path[1]) && $path[1]) ?
+                $this->ctrl = $path[1]:
                 $this->ctrl = $route['DEFAULT_CTRL'];
-            }
+
             unset($path[1]);
 
-            //检测是否包含路由缩写
-            if (isset($route['ROUTE'][$this->ctrl])) {
-                $this->action = $route['ROUTE'][$this->ctrl][1];
-                $this->ctrl = $route['ROUTE'][$this->ctrl][0];
-            } else {
-                if (isset($path[2]) && $path[2]) {
-                    $have = strstr($path[2], '?', true);
-                    if ($have) {
-                        $this->action = $have;
-                    } else {
-                        $this->action = $path[2];
-                    }
 
-                } else {
-                    $this->action = $route['DEFAULT_ACTION'];
-                }
-                unset($path[2]);
+            if (isset($path[2]) && $path[2]) {
+                $have = strstr($path[2], '?', true);
+                ($have)?
+                $this->action = $have:
+                $this->action = $path[2];
+            } else {
+                $this->action = $route['DEFAULT_ACTION'];
             }
+            unset($path[2]);
 
             $this->path = array_merge($path);
             $path_lenth = count($path);
@@ -75,11 +171,16 @@ class Route{
                 }
                 $i = $i + 2;
             }
-        } else {
-
-            $this->module = conf::get('route','DEFAULT_MODULE');
-            $this->ctrl = conf::get('route','DEFAULT_CTRL');
-            $this->action = conf::get('route','DEFAULT_ACTION');
-        }
+    }
+    /*
+     *
+     * 默认路由
+     *
+     * */
+    public function default_routes(){
+        $route = $this->route;
+        $this->module = $route['DEFAULT_MODULE'];
+        $this->ctrl = $route['DEFAULT_CTRL'];
+        $this->action = $route['DEFAULT_ACTION'];
     }
 }
