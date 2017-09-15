@@ -100,8 +100,6 @@ class Route{
         $analysis_rules = self::_analysis_route_path($rules,$route);
         $r[$analysis_rules['real_rules']] = $analysis_rules;
         self::$rules = array_merge(self::$rules,$r);
-//        dump(self::$rules);die;
-//        return new self($rules);
     }
 
 
@@ -121,9 +119,7 @@ class Route{
             $analysis_rules['real_rules'] = implode('/',$rules_arr);
         }else{
             $analysis_rules['real_rules'] = $rules;
-
         }
-//        dump($analysis_rules);die;
         return $analysis_rules;
     }
     /*
