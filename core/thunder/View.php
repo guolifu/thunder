@@ -4,6 +4,7 @@ trait View{
     public $assign;
     public $replace;
     public function __construct(){
+        if(empty($this->replace))
         $this->replace = Conf::get('tpl','TMPL_PARSE_STRING');
         $this->assign = $this->replace;
     }

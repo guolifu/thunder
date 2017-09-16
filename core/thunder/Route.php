@@ -2,14 +2,19 @@
 namespace thunder;
 class Route{
     public $module;
+
     public $ctrl;
+
     public $action;
+
     public $path;
+
     public $route;
+
     private static $rules = [];
 
     private static $_instance;
-
+    /*外部调用*/
     private static $pub_path;
 
     public static function get_instance(){
@@ -87,12 +92,26 @@ class Route{
 
         return $path;
     }
-/*
- * 提供twig
- * */
+    /*
+     * 提供外部调用
+     * */
     public static function _get_pub_path(){
         return self::$pub_path;
     }
+
+    public static function _get_module(){
+        return self::$_instance->module;
+    }
+
+    public static function _get_ctrl(){
+        return self::$_instance->ctrl;
+    }
+
+    public static function _get_action(){
+        return self::$_instance->action;
+    }
+
+
 
     public static function init($rules,$route){
         $r = array();
@@ -101,7 +120,6 @@ class Route{
         $r[$analysis_rules['real_rules']] = $analysis_rules;
         self::$rules = array_merge(self::$rules,$r);
     }
-
 
     /*
      *

@@ -14,8 +14,8 @@ class IndexController{
     public function sql(){
        $model = model('student');
 //         $model = model('teacher');
-//         $res = $model->lists();
-       $res = $model->test();
+         $res = $model->lists();
+//       $res = $model->test();
 //        $res = $model->getOne(1);
 //        $data = array('name'=>'ssssss');
 //        $res = $model->setOne(1,$data);
@@ -111,6 +111,10 @@ class IndexController{
     public function json(){
         return ['data'=>'json','status'=>1];
 //        return ['data'=>'json','status'=>1,'to_array'=>1];
+    }
+    public function url1(){
+        $b = route()->action;
+        dump($b);die;
     }
 
 }

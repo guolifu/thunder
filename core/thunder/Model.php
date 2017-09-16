@@ -3,8 +3,16 @@ namespace thunder;
 use Medoo\Medoo;
 class Model extends Medoo{
     protected $name = '';
-    public function __construct($name=''){
-        parent::__construct(conf::get('database'));
+
+    public static $data_base_conf;
+
+    public function __construct($name='',$data_base_conf=''){
+
+        /*如果存在分组数据库配置则引入，否则使用配置*/
+        $data_base_conf = (!empty($data_base_conf))?$data_base_conf:conf::get('database');
+        if(!empty(self::$data_base_conf)) $data_base_conf = self::$data_base_conf;
+
+        parent::__construct($data_base_conf);
         if(!empty($name)){
             $this->name   =  $name;
         }elseif(empty($this->name)){
@@ -13,13 +21,17 @@ class Model extends Medoo{
     }
     public function getModelName() {
         if(empty($this->name)){
-            $name = substr(get_class($this),0,-strlen('Model'));
+            $name = get_class($this);
             if ( $pos = strrpos($name,'\\') ) {//有命名空间
+
                 $this->name = substr($name,$pos+1);
+
             }else{
+
                 $this->name = $name;
             }
         }
+
         return $this->name;
     }
 
@@ -73,5 +85,11 @@ class Model extends Medoo{
     public function flushall(){
         $q = "delete  from ".$this->name;
         return $this->query($q);
+    }
+
+
+    public static function set_data_conf($data_base_conf=''){
+        if(!empty($data_base_conf))
+            self::$data_base_conf = $data_base_conf;
     }
 }
