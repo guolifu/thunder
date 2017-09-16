@@ -10,7 +10,7 @@ class Response{
 
         $data = self::setContent($dataType,$data);
         if(!is_array($data)){
-            echo($data);
+            echo $data;
         }else{
             dump($data);
         }
@@ -23,20 +23,22 @@ class Response{
     protected static function setContent($dataType,$data){
         switch($dataType){
             case 'array' :{
-                $data =
-                    (array_key_exists('to_array',$data) && $data['to_array']==1)?
-                        self::getData():
-                        $data = json($data);
+                    switch(true){
+                        case (array_key_exists('TO_ARRAY',$data) && $data['TO_ARRAY']===true):{
+                            $data = self::getData();
+                            break;
+                        }
+                        case (array_key_exists('TO_JSONP',$data) && $data['TO_JSONP']===true):{
+                            $data = jsonp($data);
+                            break;
+                        }
+                        default:{
+                            $data = json($data);
+                        }
+                    }
                 break;
             }
-            case 'integer' :{
-                $data = (int)$data;
-                break;
-            }
-            case 'string' :{
-                $data = (string)$data;
-                break;
-            }
+
             default:{
                 $data = self::getData();
             }

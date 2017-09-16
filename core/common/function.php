@@ -123,6 +123,15 @@ function json($array)
     header('Content-Type:application/json; charset=utf-8');
     return json_encode($array);
 }
+function jsonp($array)
+{
+    header('Content-Type:application/javascript; charset=utf-8');
+    $data = json_encode($array);
+
+    $handler = !empty($_GET['callback']) ? $_GET['callback'] :'jsonpReturn' ;
+    $data = $handler . '(' . $data . ');';
+    return $data;
+}
 
 function show404()
 {
@@ -130,16 +139,15 @@ function show404()
     header("status: 404 Not Found");
     exit();
 }
-function model($name=''){
-    $model_path = '\\app\\'.ucfirst($name);
-    return (class_exists($model_path))?
-        new $model_path :
-        new \thunder\Model($name);
-}
+
+
 function microtime_float(){
     list($usec, $sec) = explode(" ", microtime());
     return ((float)$usec + (float)$sec);
 }
+
+
+
 function input($name,$default='',$filter=null,$datas=null) {
     static $_PUT	=	null;
     if(strpos($name,'/')){ // 指定修饰符
@@ -274,6 +282,8 @@ function input($name,$default='',$filter=null,$datas=null) {
     is_array($data) && array_walk_recursive($data,'thunder_filter');
     return $data;
 }
+
+
 function array_map_recursive($filter, $data) {
     $result = array();
     foreach ($data as $key => $val) {
@@ -283,12 +293,31 @@ function array_map_recursive($filter, $data) {
     }
     return $result;
 }
+
+
+
 function thunder_filter(&$value){
     // 过滤查询特殊字符
     if(preg_match('/^(EXP|NEQ|GT|EGT|LT|ELT|OR|XOR|LIKE|NOTLIKE|NOT BETWEEN|NOTBETWEEN|BETWEEN|NOTIN|NOT IN|IN)$/i',$value)){
         $value .= ' ';
     }
 }
+
+
+function model($name=''){
+    $model_path = '\\app\\'.ucfirst($name);
+    return (class_exists($model_path))?
+        new $model_path :
+        new \thunder\Model($name);
+}
+
+
 function session(){
     return new \thunder\Session();
+}
+
+
+
+function route(){
+    return \thunder\Route::get_instance();
 }

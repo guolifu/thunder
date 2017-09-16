@@ -112,5 +112,9 @@ class IndexController{
         return ['data'=>'json','status'=>1];
 //        return ['data'=>'json','status'=>1,'to_array'=>1];
     }
+    public function url1(){
+        $b = route()->action;
+        dump($b);die;
+    }
 
 }

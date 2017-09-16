@@ -87,9 +87,9 @@ class Route{
 
         return $path;
     }
-/*
- * 提供twig
- * */
+    /*
+     * 提供twig
+     * */
     public static function _get_pub_path(){
         return self::$pub_path;
     }
@@ -101,7 +101,6 @@ class Route{
         $r[$analysis_rules['real_rules']] = $analysis_rules;
         self::$rules = array_merge(self::$rules,$r);
     }
-
 
     /*
      *

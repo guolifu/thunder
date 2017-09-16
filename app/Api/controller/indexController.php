@@ -6,6 +6,6 @@ class IndexController{
         return "api";
     }
     public function api(){
-        return ['api'=>1];
+        return ['api'=>1,'TO_JSONP'=>true];
     }
 }
