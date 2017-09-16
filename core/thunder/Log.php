@@ -5,7 +5,7 @@ class Log{
     static public function init(){
         $drive = Conf::get('log','DRIVE');
         $class = '\thunder\drive\log\\'.$drive;
-        self::$class = new $class;
+        self::$class =  $class::get_instance();
     }
 
     static public function log($name,$file='log'){

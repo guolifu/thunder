@@ -5,7 +5,17 @@ use thunder\Conf;
 
 class File{
     public $path;
-    public function __construct(){
+    private static $_instance;
+
+    public static function get_instance(){
+        if( ! (self::$_instance instanceof self) ) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+
+
+    private function __construct(){
         $conf = Conf::get('log','OPTION');
         $this->path = $conf['PATH'];
     }
