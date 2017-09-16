@@ -39,7 +39,6 @@ class Route{
         /*提取多余路径*/
         $before_SCRIPT_NAME = substr($SCRIPT_NAME,0,-$base_name_len);
 
-
         if(isset($_SERVER['REDIRECT_URL'])){
             /*多余路径长度*/
             $before_SCRIPT_NAME_LEN = strlen($before_SCRIPT_NAME);
@@ -47,6 +46,11 @@ class Route{
             $PATH_ALL_LEN = strlen($_SERVER['REDIRECT_URL']);
             /*提取路径*/
             $real_path = substr($_SERVER['REDIRECT_URL'],$before_SCRIPT_NAME_LEN,$PATH_ALL_LEN);
+        }
+
+        /*PATH_INFO访问*/
+        if(isset($_SERVER['PATH_INFO'])){
+            $real_path = substr($_SERVER['PATH_INFO'],1);
         }
 
         $this->route = Conf::get('route');

@@ -30,6 +30,7 @@ class IndexController{
     public function get_dish(){
         $dish = model('dish');
         $res = $dish->lists();
-        return ($res) ;
+//        dump($res);die;
+        return $res  ;
     }
 }
