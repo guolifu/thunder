@@ -15,13 +15,20 @@ class Conf
      */
     public static function get($name, $key=null)
     {
+        if(!empty(Route::_get_pub_path())){
+            $path = APP.'/'.Route::_get_module().'/common/config/'.$name.'.php';
+            p( $path);
+        }
+
         // 没有缓存过配置的话就导入配置文件
         if (!isset(self::$configs[$name])) {
+
             $file = CONF_PATH . '/' . $name . '.php';
             // 没有找到配置文件就返回false
             if (!is_file($file)) {
                 return false;
             }
+
             self::$configs[$name] = include $file;
         }
         $config = self::$configs[$name];

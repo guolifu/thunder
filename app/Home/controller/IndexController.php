@@ -14,8 +14,8 @@ class IndexController{
     public function sql(){
        $model = model('student');
 //         $model = model('teacher');
-//         $res = $model->lists();
-       $res = $model->test();
+         $res = $model->lists();
+//       $res = $model->test();
 //        $res = $model->getOne(1);
 //        $data = array('name'=>'ssssss');
 //        $res = $model->setOne(1,$data);

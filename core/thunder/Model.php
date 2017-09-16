@@ -3,8 +3,10 @@ namespace thunder;
 use Medoo\Medoo;
 class Model extends Medoo{
     protected $name = '';
-    public function __construct($name=''){
-        parent::__construct(conf::get('database'));
+    public function __construct($name='',$data_base_conf=''){
+        /*如果存在动态数据库配置则引入，否则使用配置*/
+        $data_base_conf = (!empty($data_base_conf))?$data_base_conf:conf::get('database');
+        parent::__construct($data_base_conf);
         if(!empty($name)){
             $this->name   =  $name;
         }elseif(empty($this->name)){
@@ -13,13 +15,17 @@ class Model extends Medoo{
     }
     public function getModelName() {
         if(empty($this->name)){
-            $name = substr(get_class($this),0,-strlen('Model'));
+            $name = get_class($this);
             if ( $pos = strrpos($name,'\\') ) {//有命名空间
+
                 $this->name = substr($name,$pos+1);
+
             }else{
+
                 $this->name = $name;
             }
         }
+
         return $this->name;
     }
 

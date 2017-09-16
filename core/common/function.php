@@ -304,11 +304,15 @@ function thunder_filter(&$value){
 }
 
 
-function model($name=''){
-    $model_path = '\\app\\'.ucfirst($name);
+function model($name='',$data_base_conf=''){
+
+    if(!empty($name)) $name = ucfirst($name);
+    $model_path = '\\app\\'.$name;
+
     return (class_exists($model_path))?
+        /*实例化自定义模型*/
         new $model_path :
-        new \thunder\Model($name);
+        new \thunder\Model($name,$data_base_conf);
 }
 
 
