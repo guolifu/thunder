@@ -11,7 +11,6 @@ class File{
     }
     public function log($message,$file = 'log'){
 		// 设置时区
-		date_default_timezone_set('PRC');
         $date_path = date('Ymd');
         if(!is_dir($this->path.$date_path)){
             mkdir($this->path.$date_path,'0777',true);
