@@ -1,7 +1,0 @@
-2017-09-13 09:55:13"ctrl:index=>action:index"
-2017-09-13 10:01:05"ctrl:index=>action:index"
-2017-09-13 10:15:06"ctrl:index=>action:index"
-2017-09-13 10:15:17"ctrl:index=>action:url"
-2017-09-13 12:45:25"ctrl:index=>action:index"
-2017-09-13 13:48:06"ctrl:index=>action:index"
-2017-09-13 14:08:04"ctrl:index=>action:index"

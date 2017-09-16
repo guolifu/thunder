@@ -16,7 +16,7 @@ class File{
         if(!is_dir($this->path.$date_path)){
             mkdir($this->path.$date_path,'0777',true);
         }
-        $log_name = $this->path.$date_path.'/'.$file.'.php';
+        $log_name = $this->path.$date_path.'/'.$file.'.log';
         $log_content = date('Y-m-d H:i:s').json_encode($message).PHP_EOL;
         return file_put_contents($log_name,$log_content,FILE_APPEND);
     }

@@ -32,7 +32,7 @@ class Thunder{
 
             Response::send($data);
 
-            Log::log('ctrl:'.$ctrlClass_name.'=>'.'action:'.$action);
+            Log::log('MODULE==>'.$module_name.';'.'CTRL==>'.$ctrlClass_name.';'.'ACTION==>'.$action);
         }else{
             throw new \Exception('找不到控制器【'.$ctrlClass_name.'】');
         }
