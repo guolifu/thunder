@@ -1,7 +1,9 @@
 <?php
 namespace api\controller;
+use \thunder\View;
 header("Access-Control-Allow-Origin: *");
 class IndexController{
+    use View;
     public function index(){
         return "api";
     }
@@ -32,5 +34,8 @@ class IndexController{
         $res = $dish->lists();
 //        dump($res);die;
         return $res  ;
+    }
+    public function vue(){
+        $this->display();
     }
 }

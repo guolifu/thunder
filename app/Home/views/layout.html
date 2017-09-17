@@ -6,8 +6,8 @@
 
     <title>
         {% block title %}
-        {% endblock %}
         {{title}}
+        {% endblock %}
     </title>
     <!-- Styles -->
     <style>
@@ -70,8 +70,8 @@
     <div class="content">
         <div class="title m-b-md">
             {% block content %}
+             Hello {{name}}
             {% endblock %}
-            {{name}}
         </div>
 
     </div>
