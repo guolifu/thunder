@@ -125,6 +125,7 @@ function json($array)
 }
 function jsonp($array)
 {
+    if(array_key_exists('TO_JSONP',$array)) unset($array['TO_JSONP']);
     header('Content-Type:application/javascript; charset=utf-8');
     $data = json_encode($array);
 

@@ -26,8 +26,8 @@ class IndexController{
         $res = $r->lists();
 //        $res = $r->test();
 
-        dump($res);die;
-        return ['api'=>1];
+//        dump($res);die;
+        return ['api'=>1,'TO_JSONP'=>true];
     }
     public function get_dish(){
         $dish = model('dish');
