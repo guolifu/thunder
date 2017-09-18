@@ -11,7 +11,7 @@ class IndexController{
 
         $da = array(
             'database_type' => 'mysql',
-            'database_name' => 'test',
+            'database_name' => 'webchain',
             'server' => '127.0.0.1',
             'username' => 'root',
             'password' => 'root',
@@ -19,15 +19,16 @@ class IndexController{
             // 可选
             'port' => 3306,
             // 可选，定义表的前缀
-            'prefix' => '',
+            'prefix' => 'pre_',
         );
 
-        $r = model('admin');
+        $r = model('admin',$da);
         $res = $r->lists();
 //        $res = $r->test();
 
 //        dump($res);die;
-        return ['api'=>1,'TO_JSONP'=>true];
+        return $res;
+//        return ['api'=>1];
     }
     public function get_dish(){
         $dish = model('dish');
@@ -37,5 +38,12 @@ class IndexController{
     }
     public function vue(){
         $this->display();
+    }
+    public function post(){
+        $data['name'] = input('name');
+        $data['age'] = 1;
+        $data['sex'] = 5;
+        return $data;
+
     }
 }
