@@ -5,29 +5,38 @@
     {% include "header.html" %}
 </head>
 <body>
-<div id="app">
-    ${msg}
-</div>
-
 
 
 <div id="example-3">
-    <button v-on:click="go" v-if="is_search === 1">search</button>
+
+    <child message1="child"></child>
+
+    <zujian msg="zujian"
+            v-for="(item,index) in groceryList"
+            :todo="item"
+            :index="index"
+            :key="item.id"
+            :one="groceryList"
+    ></zujian>
+
+    <button @click="go" v-if="is_search === 1">search</button>
 </div>
 </body>
 </html>
 
 <script>
+Vue.component('child',{
+    props: ['message1'],
+    template:'<span>${message1}</span>',
+    delimiters:['${', '}']
 
-    var app1 = new Vue({
-        el: '#app',
-        data:{
-            msg: 1
-        },
-        delimiters:['${', '}']
-    })
+});
+Vue.component('zujian',{
+    props: ['msg','todo','index','one'],
+    template:'<span>${msg}${one.name}</span>',
+    delimiters:['${', '}']
 
-
+});
     var sea = new Vue({
         el: '#example-3',
         methods: {
@@ -38,14 +47,15 @@
                         name:999
                     },
                     success:function(r){
-                        app1.msg = r;
                         sea.is_search = 0;
+                        sea.groceryList = r;
                     }
                 })
             }
         },
         data:{
-            is_search: 1
+            is_search: 1,
+            groceryList:''
         },
         delimiters:['${', '}']
     })

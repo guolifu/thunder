@@ -36,7 +36,7 @@ class Model extends Medoo{
     }
 
 
-    public function lists(){
+    public function all(){
         $res = $this->select($this->name,'*');
         return $res ;
     }

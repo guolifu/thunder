@@ -14,7 +14,7 @@ class IndexController{
     public function sql(){
        $model = model('student');
 //         $model = model('teacher');
-         $res = $model->lists();
+         $res = $model->all();
 //       $res = $model->test();
 //        $res = $model->getOne(1);
 //        $data = array('name'=>'ssssss');
@@ -96,7 +96,7 @@ class IndexController{
     public function url(){
         $name = 'Thunder';
         $m = model('student');
-        $res = $m->lists();
+        $res = $m->all();
         $this->assign('name',$name);
         $this->assign('students',$res);
 
@@ -116,5 +116,7 @@ class IndexController{
         $b = route()->action;
         dump($b);die;
     }
-
+    public function manual(){
+        $this->display();
+    }
 }

@@ -14,3 +14,5 @@ Route::init('gohome/{param}','home/index/url');
 Route::init('get_dish','api/index/get_dish');
 
 Route::init('vue','api/index/vue');
+
+Route::init('manual','home/index/manual');
