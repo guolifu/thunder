@@ -1,5 +1,5 @@
 <?php
-namespace api\controller;
+namespace Api\controller;
 use \thunder\View;
 header("Access-Control-Allow-Origin: *");
 class IndexController{
