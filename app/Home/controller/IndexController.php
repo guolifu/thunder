@@ -99,6 +99,9 @@ class IndexController{
         $res = $m->all();
         $this->assign('name',$name);
         $this->assign('students',$res);
+        $a = "<b>a</b>";
+
+        $this->assign('b',$a);
 
         $this->display();
     }

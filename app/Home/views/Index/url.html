@@ -7,7 +7,9 @@
 </head>
 <body>
 <div id="app">
-    <p>
+    {% autoescape false %}
+    <p>{{b}}
+    {% endautoescape %}
         {{ asset.route('goapi') }}<br/>
         {{ asset.css('1.css') }}<br/>
         {{ asset.js('2.js') }}
