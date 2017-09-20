@@ -30,32 +30,13 @@ class __TwigTemplate_5cb97fbde3fb402ba8ab8a46951987a2951f5cde44924481a5da44f5d96
 \t\t\t\t<input type=\"text\" name=\"abs\" placeholder=\"请输入\" class=\"layui-input\">
 \t\t\t</div>
 \t\t</div>
-\t\t<script id=\"editor\" type=\"text/plain\" style=\"width:1024px;height:500px;\"></script>
-
-
-
 
 \t\t<textarea name=\"content\" lay-verify=\"content\" class=\"layui-textarea\" id=\"LAY_demo1\" style=\"display: none\"></textarea>
 
 \t\t<button lay-filter=\"add\" lay-submit style=\"display: none;\"></button>
 \t</form>
 </div>
-
-<script type=\"text/javascript\" charset=\"utf-8\" src=\"";
-        // line 26
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/ueditor/ueditor.config.js"), "method"), "html", null, true);
-        echo "\"></script>
-<script type=\"text/javascript\" charset=\"utf-8\" src=\"";
-        // line 27
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/ueditor/ueditor.all.min.js"), "method"), "html", null, true);
-        echo "\"> </script>
-<script type=\"text/javascript\" charset=\"utf-8\" src=\"";
-        // line 28
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/ueditor/lang/zh-cn/zh-cn.js"), "method"), "html", null, true);
-        echo "\"></script>
-<script>
-\tvar ue = UE.getEditor('editor');
-</script>";
+";
     }
 
     public function getTemplateName()
@@ -63,14 +44,9 @@ class __TwigTemplate_5cb97fbde3fb402ba8ab8a46951987a2951f5cde44924481a5da44f5d96
         return "manual/add_form.html";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  54 => 28,  50 => 27,  46 => 26,  19 => 1,);
+        return array (  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -97,22 +73,12 @@ class __TwigTemplate_5cb97fbde3fb402ba8ab8a46951987a2951f5cde44924481a5da44f5d96
 \t\t\t\t<input type=\"text\" name=\"abs\" placeholder=\"请输入\" class=\"layui-input\">
 \t\t\t</div>
 \t\t</div>
-\t\t<script id=\"editor\" type=\"text/plain\" style=\"width:1024px;height:500px;\"></script>
-
-
-
 
 \t\t<textarea name=\"content\" lay-verify=\"content\" class=\"layui-textarea\" id=\"LAY_demo1\" style=\"display: none\"></textarea>
 
 \t\t<button lay-filter=\"add\" lay-submit style=\"display: none;\"></button>
 \t</form>
 </div>
-
-<script type=\"text/javascript\" charset=\"utf-8\" src=\"{{asset.asset('plugins/ueditor/ueditor.config.js')}}\"></script>
-<script type=\"text/javascript\" charset=\"utf-8\" src=\"{{asset.asset('plugins/ueditor/ueditor.all.min.js')}}\"> </script>
-<script type=\"text/javascript\" charset=\"utf-8\" src=\"{{asset.asset('plugins/ueditor/lang/zh-cn/zh-cn.js')}}\"></script>
-<script>
-\tvar ue = UE.getEditor('editor');
-</script>", "manual/add_form.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Admin\\views\\Manual\\add_form.html");
+", "manual/add_form.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Admin\\views\\Manual\\add_form.html");
     }
 }

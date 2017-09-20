@@ -120,6 +120,8 @@ class IndexController{
         dump($b);die;
     }
     public function manual(){
+        $info = model('manual')->getOne(15);
+        $this->assign('info',$info);
         $this->display();
     }
 }

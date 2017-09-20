@@ -24,7 +24,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
 <link rel=\"stylesheet\" href=";
         // line 5
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "css", array(0 => "list.css", 1 => true), "method"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "css", array(0 => "list.css"), "method"), "html", null, true);
         echo ">
 
 <body>
@@ -48,8 +48,13 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 <div class=\"meny-arrow\"></div>
 
 <div class=\"contents\">
-    <article>
-        <h1>Meny</h1>
+    ";
+        // line 29
+        echo "    <article>
+        <h1>";
+        // line 30
+        echo $this->getAttribute((isset($context["info"]) ? $context["info"] : null), "content", array());
+        echo "</h1>
         <p>
             A three dimensional and space efficient menu.
         </p>
@@ -73,12 +78,14 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
             Created by hakim.se</a>
         </small>
     </article>
-
+    ";
+        // line 55
+        echo "
 </div>
 
 <script src=";
-        // line 56
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "meny.js", 1 => true), "method"), "html", null, true);
+        // line 58
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "meny.js"), "method"), "html", null, true);
         echo "></script>
 <script>
     // Create an instance of Meny
@@ -138,7 +145,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
     public function getDebugInfo()
     {
-        return array (  81 => 56,  27 => 5,  23 => 3,  21 => 2,  19 => 1,);
+        return array (  88 => 58,  83 => 55,  56 => 30,  53 => 29,  27 => 5,  23 => 3,  21 => 2,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -155,7 +162,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 {% include \"nav.html\" %}
 
 
-<link rel=\"stylesheet\" href={{asset.css('list.css',true)}}>
+<link rel=\"stylesheet\" href={{asset.css('list.css')}}>
 
 <body>
 
@@ -178,8 +185,9 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 <div class=\"meny-arrow\"></div>
 
 <div class=\"contents\">
+    {% autoescape false %}
     <article>
-        <h1>Meny</h1>
+        <h1>{{info.content}}</h1>
         <p>
             A three dimensional and space efficient menu.
         </p>
@@ -203,10 +211,11 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
             Created by hakim.se</a>
         </small>
     </article>
+    {% endautoescape %}
 
 </div>
 
-<script src={{asset.js('meny.js',true)}}></script>
+<script src={{asset.js('meny.js')}}></script>
 <script>
     // Create an instance of Meny
     var meny = Meny.create({

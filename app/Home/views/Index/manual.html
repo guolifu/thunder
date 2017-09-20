@@ -25,8 +25,9 @@
 <div class="meny-arrow"></div>
 
 <div class="contents">
+    {% autoescape false %}
     <article>
-        <h1>Meny</h1>
+        <h1>{{info.content}}</h1>
         <p>
             A three dimensional and space efficient menu.
         </p>
@@ -50,6 +51,7 @@
             Created by hakim.se</a>
         </small>
     </article>
+    {% endautoescape %}
 
 </div>
 
