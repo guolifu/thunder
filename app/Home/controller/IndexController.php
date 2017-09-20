@@ -1,5 +1,5 @@
 <?php
-namespace home\controller;
+namespace Home\controller;
 use \thunder\View;
 class IndexController{
     use view;
