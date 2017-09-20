@@ -22,9 +22,11 @@ class File{
     public function log($message,$file = 'log'){
 		// 设置时区
         $date_path = date('Y').'/'.date('md');
-        if(!is_dir($this->path.$date_path)){
-            mkdir($this->path.$date_path,'0777',true);
-        }
+        !is_dir($this->path.$date_path) && mkdir( $this->path.$date_path, 0777, true);
+
+//        if(!is_dir($this->path.$date_path)){
+//            mkdir($this->path.$date_path,'0777',true);
+//        }
         $log_name = $this->path.$date_path.'/'.$file.'.log';
         $log_content = date('Y-m-d H:i:s').json_encode($message).PHP_EOL;
         return file_put_contents($log_name,$log_content,FILE_APPEND);
