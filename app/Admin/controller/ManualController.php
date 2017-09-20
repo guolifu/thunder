@@ -27,6 +27,7 @@ class ManualController{
     }
     public function add(){
         $data = input('post.');
+        $data['content'] = htmlspecialchars_decode($data['content']);
         $data['add_time'] = $data['update_time'] =  time();
         $manual = model('manual');
         $res = $manual->add($data);
@@ -34,6 +35,7 @@ class ManualController{
     }
     public function edit(){
         $data = input('post.');
+        $data['content'] = htmlspecialchars_decode($data['content']);
         $data['update_time'] =  time();
         $res = model('manual')->setOne($data['id'],$data);
         return $res?['msg'=>'编辑成功']:['msg'=>'编辑失败'];
