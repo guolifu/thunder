@@ -1,8 +1,10 @@
 <?php
 namespace app;
-use \thunder\Model;
+use Illuminate\Database\Eloquent\Model;
 class Student extends Model{
+    protected $table = 'student';
+    public $timestamps = false;
     public function test(){
-        return $this->lists();
+        return 1;
     }
 }

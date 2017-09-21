@@ -9,7 +9,7 @@ class Model extends Medoo{
     public function __construct($name='',$data_base_conf=''){
 
         /*如果存在分组数据库配置则引入，否则使用配置*/
-        $data_base_conf = (!empty($data_base_conf))?$data_base_conf:conf::get('database');
+        $data_base_conf = (!empty($data_base_conf))?$data_base_conf:conf::get('database','MEDOO');
         if(!empty(self::$data_base_conf)) $data_base_conf = self::$data_base_conf;
 
         parent::__construct($data_base_conf);

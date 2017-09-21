@@ -11,7 +11,8 @@
     "symfony/var-dumper":"*",
     "catfan/medoo":"*",
     "twig/twig":"<2.0",
-    "illuminate/database": "*"
+    "illuminate/database": "*",
+    "vlucas/phpdotenv":"*"
   },
   "repositories": {
     "packagist": {

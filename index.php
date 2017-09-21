@@ -21,6 +21,9 @@ define('REQUEST_METHOD',$_SERVER['REQUEST_METHOD']);
 define('IS_GET',        REQUEST_METHOD =='GET' ? true : false);
 define('IS_POST',       REQUEST_METHOD =='POST' ? true : false);
 include "vendor/autoload.php";
+/*加载env配置*/
+$dotenv  =  new  \Dotenv\Dotenv(__DIR__);
+$dotenv->load();
 define('DEBUG',true);
 if(DEBUG){
     $whoops = new \Whoops\Run;

@@ -303,6 +303,10 @@ function thunder_filter(&$value){
         $value .= ' ';
     }
 }
+function table($name='',$data_base_conf=''){
+    return new \thunder\Model($name,$data_base_conf);
+}
+
 
 
 function model($name='',$data_base_conf=''){

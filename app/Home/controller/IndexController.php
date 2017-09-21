@@ -1,6 +1,7 @@
 <?php
 namespace Home\controller;
 use \thunder\View;
+use \app\Student;
 class IndexController{
     use view;
     public function index(){
@@ -123,5 +124,10 @@ class IndexController{
         $info = model('manual')->getOne(15);
         $this->assign('info',$info);
         $this->display();
+    }
+    public function url2(){
+        $stu = model('student')->find(2);
+
+        dump($stu);die;
     }
 }
