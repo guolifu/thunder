@@ -15,7 +15,7 @@ trait View{
     }
     public function display($view=''){
         $route = Route::get_instance();
-        $m = $route->module;
+        $m = ucfirst($route->module);
         $c = $route->ctrl;
 
         if(empty($view)){
