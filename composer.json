@@ -6,7 +6,12 @@
     "PHP","PHP Framework"
   ],
   "require":{
-    "php":">=5.4.0"
+    "php":">=5.4.0",
+    "filp/whoops":"*",
+    "symfony/var-dumper":"*",
+    "catfan/medoo":"*",
+    "twig/twig":"<2.0",
+    "illuminate/database": "*"
   },
   "repositories": {
     "packagist": {
