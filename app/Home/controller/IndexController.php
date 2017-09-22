@@ -126,8 +126,17 @@ class IndexController{
         $this->display();
     }
     public function url2(){
-        $stu = model('student')->find(2);
+        $stu = model('student')->with('Dept');
 
-        dump($stu);die;
+        $a = $stu->get();
+
+        return(($a));die;
+    }
+    public function url3(){
+        $stu = model('dept')->with('students');
+
+        $a = $stu->get();
+
+        return(($a));die;
     }
 }
