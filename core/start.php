@@ -1,16 +1,18 @@
 <?php
 namespace thunder;
-use Illuminate\Database\Capsule\Manager as Capsule;
 /*
 *   注册自动加载
 *
 */
 spl_autoload_register('\thunder\thunder::load');
-/*ORM数据库*/
-$data = conf::get('database','ORM');
-$capsule = new Capsule;
-$capsule->addConnection($data);
-$capsule->bootEloquent();
+/*
+ *
+ * ORM
+ *
+ *  */
+
+include CORE.'/Illuminate.php';
+
 /*
  * 加载注册路由
  * */

@@ -126,7 +126,7 @@ class IndexController{
         $this->display();
     }
     public function url2(){
-        $stu = model('student')->find(2);
+        $stu = model('student')->all();
 
         dump($stu);die;
     }
