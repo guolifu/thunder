@@ -130,7 +130,7 @@ class IndexController{
 
         $a = $stu->get();
 
-        return(($a));die;
+        return (($a));
     }
     public function url3(){
         $stu = model('dept')->with('students');

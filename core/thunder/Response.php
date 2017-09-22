@@ -38,6 +38,10 @@ class Response{
                     }
                 break;
             }
+            case 'object' :{
+                $data = json($data);
+                break;
+            }
 
             default:{
                 $data = self::getData();

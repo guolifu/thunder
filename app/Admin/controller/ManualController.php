@@ -11,12 +11,12 @@ class ManualController{
     }
     public function edit_form(){
         $id = input('get.id');
-        $info = model('manual')->getOne($id);
+        $info = table('manual')->getOne($id);
         $this->assign('info',$info);
         $this->display();
     }
     public function datas(){
-        $manual = model('manual');
+        $manual = table('manual');
         $list = $manual->all();
         foreach($list as &$v){
             $v['add_time'] = Date('Y-m-d H:i:s',$v['add_time']);
@@ -29,7 +29,7 @@ class ManualController{
         $data = input('post.');
         $data['content'] = htmlspecialchars_decode($data['content']);
         $data['add_time'] = $data['update_time'] =  time();
-        $manual = model('manual');
+        $manual = table('manual');
         $res = $manual->add($data);
         return $res->rowCount()?['msg'=>'添加成功']:['msg'=>'添加失败'];
     }
@@ -37,13 +37,13 @@ class ManualController{
         $data = input('post.');
         $data['content'] = htmlspecialchars_decode($data['content']);
         $data['update_time'] =  time();
-        $res = model('manual')->setOne($data['id'],$data);
+        $res = table('manual')->setOne($data['id'],$data);
         return $res->rowCount()?['msg'=>'编辑成功']:['msg'=>'编辑失败'];
 
     }
     public function delete(){
         $id = input('post.id');
-        $res = model('manual')->destroy($id);
+        $res = table('manual')->destroy($id);
         return $res->rowCount()?['msg'=>'删除成功']:['msg'=>'删除失败'];
     }
 }

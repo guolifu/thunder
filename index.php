@@ -1,6 +1,6 @@
 <?php
 // 检测PHP环境
-if(version_compare(PHP_VERSION,'5.4.0','<'))  die('require PHP > 5.4.0 !');
+if(version_compare(PHP_VERSION,'7.0.0','<'))  die('require PHP > 7.0.0 !');
 header("Content-type:text/html;charset=utf-8");
 date_default_timezone_set('PRC');
 header("Access-Control-Allow-Origin: *");

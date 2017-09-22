@@ -48,7 +48,7 @@
 						</li>
 						<li class="layui-nav-item">
 							<a href="javascript:;" class="admin-header-user">
-								<img src="images/0.jpg" />
+								<img src="{{asset.asset('images/0.jpg')}}" />
 								<span>beginner</span>
 							</a>
 							<dl class="layui-nav-child">
@@ -105,12 +105,12 @@
 				<i class="layui-icon">&#xe602;</i>
 			</div>
 			<div class="site-mobile-shade"></div>
-			
+
 			<!--锁屏模板 start-->
 			<script type="text/template" id="lock-temp">
 				<div class="admin-header-lock" id="lock-box">
 					<div class="admin-header-lock-img">
-						<img src="images/0.jpg"/>
+						<img src="{{asset.asset('images/0.jpg')}}"/>
 					</div>
 					<div class="admin-header-lock-name" id="lockUserName">beginner</div>
 					<input type="text" class="admin-header-lock-input" value="输入密码解锁.." name="lockPwd" id="lockPwd" />
@@ -118,7 +118,7 @@
 				</div>
 			</script>
 			<!--锁屏模板 end -->
-			
+
 			<script type="text/javascript" src="{{asset.asset('plugins/layui/layui.js')}}"></script>
 			<script type="text/javascript" src="{{asset.asset('datas/nav.js')}}"></script>
 			<script src="{{asset.js('index.js')}}"></script>
