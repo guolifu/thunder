@@ -1,7 +1,7 @@
 <?php
 namespace thunder;
 
-class page{
+class Page{
 
     protected $_page_max = 0;
     protected $_total = 0;

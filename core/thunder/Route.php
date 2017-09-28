@@ -158,14 +158,14 @@ class Route{
             //去掉多余的分隔符
             $path = explode('/', trim($path[0], '/'));
              (isset($path[0]) && $path[0])?
-                $this->module = $path[0] :
-                $this->module = $route['DEFAULT_MODULE'];
+                $this->module = $this->ucfirst_name($path[0]) :
+                $this->module = $this->ucfirst_name($route['DEFAULT_MODULE']);
 
             unset($path[0]);
 
              (isset($path[1]) && $path[1]) ?
-                $this->ctrl = $path[1]:
-                $this->ctrl = $route['DEFAULT_CTRL'];
+                $this->ctrl = $this->ucfirst_name($path[1]):
+                $this->ctrl = $this->ucfirst_name($route['DEFAULT_CTRL']);
 
             unset($path[1]);
 
@@ -200,5 +200,9 @@ class Route{
         $this->module = $route['DEFAULT_MODULE'];
         $this->ctrl = $route['DEFAULT_CTRL'];
         $this->action = $route['DEFAULT_ACTION'];
+    }
+
+    public function ucfirst_name($val){
+        return ucfirst(strtolower($val));
     }
 }

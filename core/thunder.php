@@ -8,10 +8,9 @@ class Thunder{
         Log::init();
 
         $route = Route::get_instance();
-        $module_name = ucfirst($route->module);
-        $ctrlClass_name = ucfirst($route->ctrl);
+        $module_name = ucfirst(strtolower($route->module));
+        $ctrlClass_name = ucfirst(strtolower($route->ctrl));
         $action = $route->action;
-
         $module_dir = APP.'/'.$module_name;
         if(!is_dir($module_dir)){
             throw new \Exception('找不到模块【'.$module_name.'】');

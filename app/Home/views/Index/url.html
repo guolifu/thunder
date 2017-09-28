@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<script src="{{__PUBLIC__}}/Public/js/vendor/jquery-1.11.2.min.js"></script>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,6 +8,7 @@
     {% include "header.html" %}
 </head>
 <body>
+<button onclick="change()">点击更改显示的路由组件</button>
 <div id="app">
     {% autoescape false %}
     <p>{{b}}
@@ -25,25 +28,43 @@
         #}
     </p>
 </div>
-
-<div id="app-2">
-  <span v-bind:title="message">
-    鼠标悬停几秒钟查看此处动态绑定的提示信息！
-  </span>
+<div id="contents" >
+    <content-title :title="title" ></content-title>
+    <content-content  :content="content"  ></content-content>
+    <small>
+        Created by hakim.se
+    </small>
 </div>
 <script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            message: 'Hello Vue!'
-        }
-    })
-    var app2 = new Vue({
-        el: '#app-2',
-        data: {
-            message: '页面加载于 ' + new Date().toLocaleString()
-        }
-    })
+
+
+Vue.component('content-title',{
+    props:['title'],
+    template:'<h1>{title}</h1>',
+    delimiters:['{', '}']
+})
+Vue.component('content-content',{
+    props:['content'],
+    template:'<article>{content}</article>',
+    delimiters:['{', '}']
+})
+
+
+var content = new Vue({
+    el:"#contents",
+    data:{
+        title:'',
+        content:''
+    }
+})
+$.ajax({
+    url:'/home/index/get_manual',
+    type:'post',
+    success:function(r){
+        content.title = r.title;
+        content.content = r.content;
+    }
+})
 </script>
 </body>
 </html>

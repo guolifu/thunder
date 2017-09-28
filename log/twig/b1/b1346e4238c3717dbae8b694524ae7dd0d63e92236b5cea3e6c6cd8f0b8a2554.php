@@ -1,6 +1,6 @@
 <?php
 
-/* index/manual.html */
+/* Index/manual.html */
 class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df501b4 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -16,77 +16,73 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        $this->loadTemplate("layout_top.html", "index/manual.html", 1)->display($context);
+        echo "<link rel=\"stylesheet\" href=";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/layui/css/layui.css"), "method"), "html", null, true);
+        echo ">
+";
         // line 2
-        $this->loadTemplate("nav.html", "index/manual.html", 2)->display($context);
+        $this->loadTemplate("header.html", "Index/manual.html", 2)->display($context);
         // line 3
-        echo "
+        $this->loadTemplate("layout_top.html", "Index/manual.html", 3)->display($context);
+        // line 4
+        $this->loadTemplate("nav.html", "Index/manual.html", 4)->display($context);
+        // line 5
+        echo "<style>
+    a{
+        cursor: pointer;
+    }
+</style>
+<script src=\"";
+        // line 10
+        echo twig_escape_filter($this->env, (isset($context["__PUBLIC__"]) ? $context["__PUBLIC__"] : null), "html", null, true);
+        echo "/Public/js/vendor/jquery-1.11.2.min.js\"></script>
+
 
 <link rel=\"stylesheet\" href=";
-        // line 5
+        // line 13
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "css", array(0 => "list.css"), "method"), "html", null, true);
         echo ">
 
+
 <body>
 
-<div class=\"meny\">
+<div class=\"meny\" >
     <h2>More Experiments</h2>
-    <ul>
-        <li><a href=\"./\">Avgrund</a></li>
-        <li><a href=\"#\">Radar</a></li>
-        <li><a href=\"#\">forkit.js</a></li>
-        <li><a href=\"#\">stroll.js</a></li>
-        <li><a href=\"#\">zoom.js</a></li>
-        <li><a href=\"#\">reveal.js</a></li>
-        <li><a href=\"#\">Sinuous for iOS</a></li>
-        <li><a href=\"#\">DOM Tree</a></li>
-        <li><a href=\"#\">Holobox</a></li>
-        <li><a href=\"#\">404</a></li>
+    <ul id=\"left-nav\" >
+        <left-nav v-for=\"(item,index) in nav_list\"
+                  :nav=\"item\"
+                  :index=\"index\"
+                  :key=\"item.id\"
+                  @click.native=\"go(item.id)\"
+        ></left-nav>
     </ul>
 </div>
 
-<div class=\"meny-arrow\"></div>
+<div  class=\"meny-arrow\"></div>
+<div id=\"display\">
+    <con-display v-if=\"display==1\"></con-display>
+</div>
 
-<div class=\"contents\">
-    ";
-        // line 29
-        echo "    <article>
-        <h1>";
-        // line 30
-        echo $this->getAttribute((isset($context["info"]) ? $context["info"] : null), "content", array());
-        echo "</h1>
-        <p>
-            A three dimensional and space efficient menu.
-        </p>
-        <p>
-            Move your mouse towards the arrow &mdash; or swipe in from the arrow if you're on a touch device &mdash; to open.
-        </p>
-        <p>
-            Meny can be positioned on any side of the screen: <br>
-            <a href=\"#\">top</a>
-            - <a href=\"#\">right</a>
-            - <a href=\"#\">bottom</a>
-            - <a href=\"#\">left</a>
-        </p>
-        <p>
-            Instructions and download .
-        </p>
-        <p>
-            The name, <em>Meny</em>, is swedish.
-        </p>
+
+<div  class=\"contents\">
+    <article  id=\"contents\" >
+        <content-title :title=\"title\" ></content-title>
+        <content-content   v-html=\"content\"  ></content-content>
         <small>
-            Created by hakim.se</a>
+            Created by hakim.se
         </small>
     </article>
-    ";
-        // line 55
-        echo "
+
 </div>
 
 <script src=";
-        // line 58
+        // line 47
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "meny.js"), "method"), "html", null, true);
         echo "></script>
+<script src=\"";
+        // line 48
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/layui/layui.js"), "method"), "html", null, true);
+        echo "\"></script>
 <script>
     // Create an instance of Meny
     var meny = Meny.create({
@@ -130,12 +126,92 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
         contents.style.padding = '0px';
         contents.innerHTML = '<div class=\"cover\"></div><iframe src=\"'+ Meny.getQuery().u +'\" style=\"width: 100%; height: 100%; border: 0; position: absolute;\"></iframe>';
     }
+    Vue.component('left-nav',{
+        props:['nav'],
+        template:'<li><a>{nav.title}</a></li>',
+        delimiters:['{', '}']
+    })
+    var leftNav = new Vue({
+        el:\"#left-nav\",
+        data:{
+            nav_list:''
+        },
+        methods:{
+            go:function (id) {
+                if(id == content.id) return false;
+                dis.display = 1;
+                    \$.ajax({
+                    url:'./home/index/get_manual',
+                    type:'post',
+                    data:{
+                      id:id
+                    },
+                    success:function(r){
+                        content.id = r.id;
+                        content.title = r.title;
+                        content.content = r.content;
+                        dis.display = 0;
+                        document.getElementById(\"contents\").scrollIntoView();
+                    }
+                })
+
+            }
+        }
+
+    })
+
+    Vue.component('content-title',{
+        props:['title'],
+        template:'<h1>{title}</h1>',
+        delimiters:['{', '}']
+    })
+    Vue.component('content-content',{
+        props:['content'],
+        template:'<article>{content}</article>',
+        delimiters:['{', '}']
+    })
+
+
+
+    var content = new Vue({
+        el:\"#contents\",
+        data:{
+            id:'',
+            title:'',
+            content:''
+        }
+    })
+    \$.ajax({
+        url:'./home/index/get_manual',
+        type:'post',
+        success:function(r){
+            content.title = r.title;
+            content.content = r.content;
+            \$.ajax({
+                url:'./home/index/get_manualList',
+                type:'post',
+                success:function(r){
+                    leftNav.nav_list = r;
+                }
+            })
+        }
+    })
+    Vue.component('con-display',{
+        template:'<div style=\"position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;\" ><img style=\"position:relative;top:40%;left: 48%\" src=\"\\\\public\\\\Admin\\\\plugins\\\\layui\\\\css\\\\modules\\\\layer\\\\default\\\\loading-2.gif\"/></div>'
+    })
+    var dis = new Vue({
+        el:'#display',
+        data:{
+            display:''
+        }
+    })
+
 </script>";
     }
 
     public function getTemplateName()
     {
-        return "index/manual.html";
+        return "Index/manual.html";
     }
 
     public function isTraitable()
@@ -145,7 +221,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
     public function getDebugInfo()
     {
-        return array (  88 => 58,  83 => 55,  56 => 30,  53 => 29,  27 => 5,  23 => 3,  21 => 2,  19 => 1,);
+        return array (  84 => 48,  80 => 47,  43 => 13,  37 => 10,  30 => 5,  28 => 4,  26 => 3,  24 => 2,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -158,64 +234,54 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% include \"layout_top.html\" %}
+        return new Twig_Source("<link rel=\"stylesheet\" href={{asset.asset('plugins/layui/css/layui.css')}}>
+{% include \"header.html\" %}
+{% include \"layout_top.html\" %}
 {% include \"nav.html\" %}
+<style>
+    a{
+        cursor: pointer;
+    }
+</style>
+<script src=\"{{__PUBLIC__}}/Public/js/vendor/jquery-1.11.2.min.js\"></script>
 
 
 <link rel=\"stylesheet\" href={{asset.css('list.css')}}>
 
+
 <body>
 
-<div class=\"meny\">
+<div class=\"meny\" >
     <h2>More Experiments</h2>
-    <ul>
-        <li><a href=\"./\">Avgrund</a></li>
-        <li><a href=\"#\">Radar</a></li>
-        <li><a href=\"#\">forkit.js</a></li>
-        <li><a href=\"#\">stroll.js</a></li>
-        <li><a href=\"#\">zoom.js</a></li>
-        <li><a href=\"#\">reveal.js</a></li>
-        <li><a href=\"#\">Sinuous for iOS</a></li>
-        <li><a href=\"#\">DOM Tree</a></li>
-        <li><a href=\"#\">Holobox</a></li>
-        <li><a href=\"#\">404</a></li>
+    <ul id=\"left-nav\" >
+        <left-nav v-for=\"(item,index) in nav_list\"
+                  :nav=\"item\"
+                  :index=\"index\"
+                  :key=\"item.id\"
+                  @click.native=\"go(item.id)\"
+        ></left-nav>
     </ul>
 </div>
 
-<div class=\"meny-arrow\"></div>
+<div  class=\"meny-arrow\"></div>
+<div id=\"display\">
+    <con-display v-if=\"display==1\"></con-display>
+</div>
 
-<div class=\"contents\">
-    {% autoescape false %}
-    <article>
-        <h1>{{info.content}}</h1>
-        <p>
-            A three dimensional and space efficient menu.
-        </p>
-        <p>
-            Move your mouse towards the arrow &mdash; or swipe in from the arrow if you're on a touch device &mdash; to open.
-        </p>
-        <p>
-            Meny can be positioned on any side of the screen: <br>
-            <a href=\"#\">top</a>
-            - <a href=\"#\">right</a>
-            - <a href=\"#\">bottom</a>
-            - <a href=\"#\">left</a>
-        </p>
-        <p>
-            Instructions and download .
-        </p>
-        <p>
-            The name, <em>Meny</em>, is swedish.
-        </p>
+
+<div  class=\"contents\">
+    <article  id=\"contents\" >
+        <content-title :title=\"title\" ></content-title>
+        <content-content   v-html=\"content\"  ></content-content>
         <small>
-            Created by hakim.se</a>
+            Created by hakim.se
         </small>
     </article>
-    {% endautoescape %}
 
 </div>
 
 <script src={{asset.js('meny.js')}}></script>
+<script src=\"{{asset.asset('plugins/layui/layui.js')}}\"></script>
 <script>
     // Create an instance of Meny
     var meny = Meny.create({
@@ -259,6 +325,86 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
         contents.style.padding = '0px';
         contents.innerHTML = '<div class=\"cover\"></div><iframe src=\"'+ Meny.getQuery().u +'\" style=\"width: 100%; height: 100%; border: 0; position: absolute;\"></iframe>';
     }
-</script>", "index/manual.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Home\\views\\Index\\manual.html");
+    Vue.component('left-nav',{
+        props:['nav'],
+        template:'<li><a>{nav.title}</a></li>',
+        delimiters:['{', '}']
+    })
+    var leftNav = new Vue({
+        el:\"#left-nav\",
+        data:{
+            nav_list:''
+        },
+        methods:{
+            go:function (id) {
+                if(id == content.id) return false;
+                dis.display = 1;
+                    \$.ajax({
+                    url:'./home/index/get_manual',
+                    type:'post',
+                    data:{
+                      id:id
+                    },
+                    success:function(r){
+                        content.id = r.id;
+                        content.title = r.title;
+                        content.content = r.content;
+                        dis.display = 0;
+                        document.getElementById(\"contents\").scrollIntoView();
+                    }
+                })
+
+            }
+        }
+
+    })
+
+    Vue.component('content-title',{
+        props:['title'],
+        template:'<h1>{title}</h1>',
+        delimiters:['{', '}']
+    })
+    Vue.component('content-content',{
+        props:['content'],
+        template:'<article>{content}</article>',
+        delimiters:['{', '}']
+    })
+
+
+
+    var content = new Vue({
+        el:\"#contents\",
+        data:{
+            id:'',
+            title:'',
+            content:''
+        }
+    })
+    \$.ajax({
+        url:'./home/index/get_manual',
+        type:'post',
+        success:function(r){
+            content.title = r.title;
+            content.content = r.content;
+            \$.ajax({
+                url:'./home/index/get_manualList',
+                type:'post',
+                success:function(r){
+                    leftNav.nav_list = r;
+                }
+            })
+        }
+    })
+    Vue.component('con-display',{
+        template:'<div style=\"position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;\" ><img style=\"position:relative;top:40%;left: 48%\" src=\"\\\\public\\\\Admin\\\\plugins\\\\layui\\\\css\\\\modules\\\\layer\\\\default\\\\loading-2.gif\"/></div>'
+    })
+    var dis = new Vue({
+        el:'#display',
+        data:{
+            display:''
+        }
+    })
+
+</script>", "Index/manual.html", "D:\\phpStudy\\WWW\\thunder\\app\\Home\\views\\Index\\manual.html");
     }
 }

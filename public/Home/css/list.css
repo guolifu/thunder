@@ -142,7 +142,7 @@ h2 {
 	        box-sizing: border-box;
 }
 	.contents>article {
-		max-width: 400px;
+		/*max-width: 400px;*/
 	}
 	.contents p {
 		margin: 10px 0 10px 0;

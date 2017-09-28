@@ -10,4 +10,7 @@ class StudentController{
 //        $this->display('index/url');
 //        $this->display('api/index/views');
     }
+    public function student(){
+        return 'studetn';
+    }
 }

@@ -47,7 +47,7 @@ class StatusCommand extends BaseCommand
      *
      * @return void
      */
-    public function handle()
+    public function fire()
     {
         $this->migrator->setConnection($this->option('database'));
 

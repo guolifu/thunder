@@ -41,11 +41,12 @@ class PostgresGrammar extends Grammar
     /**
      * Compile the query to determine the list of columns.
      *
+     * @param  string  $table
      * @return string
      */
-    public function compileColumnListing()
+    public function compileColumnListing($table)
     {
-        return 'select column_name from information_schema.columns where table_schema = ? and table_name = ?';
+        return "select column_name from information_schema.columns where table_name = '$table'";
     }
 
     /**
@@ -148,28 +149,6 @@ class PostgresGrammar extends Grammar
     public function compileDropIfExists(Blueprint $blueprint, Fluent $command)
     {
         return 'drop table if exists '.$this->wrapTable($blueprint);
-    }
-
-    /**
-     * Compile the SQL needed to drop all tables.
-     *
-     * @param  string  $tables
-     * @return string
-     */
-    public function compileDropAllTables($tables)
-    {
-        return 'drop table "'.implode('","', $tables).'" cascade';
-    }
-
-    /**
-     * Compile the SQL needed to retrieve all table names.
-     *
-     * @param  string  $schema
-     * @return string
-     */
-    public function compileGetAllTables($schema)
-    {
-        return "select tablename from pg_catalog.pg_tables where schemaname = '{$schema}'";
     }
 
     /**
@@ -495,7 +474,7 @@ class PostgresGrammar extends Grammar
      */
     protected function typeDateTime(Fluent $column)
     {
-        return "timestamp($column->precision) without time zone";
+        return 'timestamp(0) without time zone';
     }
 
     /**
@@ -506,7 +485,7 @@ class PostgresGrammar extends Grammar
      */
     protected function typeDateTimeTz(Fluent $column)
     {
-        return "timestamp($column->precision) with time zone";
+        return 'timestamp(0) with time zone';
     }
 
     /**
@@ -540,10 +519,10 @@ class PostgresGrammar extends Grammar
     protected function typeTimestamp(Fluent $column)
     {
         if ($column->useCurrent) {
-            return "timestamp($column->precision) without time zone default CURRENT_TIMESTAMP($column->precision)";
+            return 'timestamp(0) without time zone default CURRENT_TIMESTAMP(0)';
         }
 
-        return "timestamp($column->precision) without time zone";
+        return 'timestamp(0) without time zone';
     }
 
     /**
@@ -555,10 +534,10 @@ class PostgresGrammar extends Grammar
     protected function typeTimestampTz(Fluent $column)
     {
         if ($column->useCurrent) {
-            return "timestamp($column->precision) with time zone default CURRENT_TIMESTAMP($column->precision)";
+            return 'timestamp(0) with time zone default CURRENT_TIMESTAMP(0)';
         }
 
-        return "timestamp($column->precision) with time zone";
+        return 'timestamp(0) with time zone';
     }
 
     /**

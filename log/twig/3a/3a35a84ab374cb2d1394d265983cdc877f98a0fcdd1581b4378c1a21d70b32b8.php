@@ -10,7 +10,6 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
         $this->parent = false;
 
         $this->blocks = array(
-            'list' => array($this, 'block_list'),
             'head' => array($this, 'block_head'),
         );
     }
@@ -25,9 +24,8 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
         echo "
 ";
         // line 5
-        $this->displayBlock('list', $context, $blocks);
-        // line 8
-        echo "<div class=\"jumbotron\">
+        echo "
+<div class=\"jumbotron\">
     <div class=\"container\">
         <h1>Hello Thunder</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
@@ -40,9 +38,9 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
     <div class=\"row\">
         <div class=\"col-md-4\">
             ";
-        // line 20
+        // line 18
         $this->displayBlock('head', $context, $blocks);
-        // line 23
+        // line 21
         echo "            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
             <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>
         </div>
@@ -65,22 +63,22 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
     </footer>
 </div> <!-- /container -->
 <script>window.jQuery || document.write('<script src=\"";
-        // line 44
+        // line 42
         echo twig_escape_filter($this->env, (isset($context["__PUBLIC__"]) ? $context["__PUBLIC__"] : null), "html", null, true);
         echo "/Public/js/vendor/jquery-1.11.2.min.js\"><\\/script>')</script>
 
 <script src=";
-        // line 46
+        // line 44
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "vendor/bootstrap.min.js", 1 => true), "method"), "html", null, true);
         echo "></script>
 
 <script src=";
-        // line 48
+        // line 46
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "main.js", 1 => true), "method"), "html", null, true);
         echo "></script>
 
 ";
-        // line 51
+        // line 49
         echo "<script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -94,18 +92,10 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
 ";
     }
 
-    // line 5
-    public function block_list($context, array $blocks = array())
-    {
-        // line 6
-        echo "
-";
-    }
-
-    // line 20
+    // line 18
     public function block_head($context, array $blocks = array())
     {
-        // line 21
+        // line 19
         echo "            <h2>Heading</h2>
             ";
     }
@@ -122,7 +112,7 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
 
     public function getDebugInfo()
     {
-        return array (  109 => 21,  106 => 20,  101 => 6,  98 => 5,  84 => 51,  79 => 48,  74 => 46,  69 => 44,  46 => 23,  44 => 20,  30 => 8,  28 => 5,  25 => 3,  23 => 2,  21 => 1,);
+        return array (  99 => 19,  96 => 18,  82 => 49,  77 => 46,  72 => 44,  67 => 42,  44 => 21,  42 => 18,  27 => 5,  24 => 3,  22 => 2,  20 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -139,9 +129,7 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
 {% include \"nav.html\" %}
 
 {# Main jumbotron for a primary marketing message or call to action #}
-{% block list %}
 
-{% endblock %}
 <div class=\"jumbotron\">
     <div class=\"container\">
         <h1>Hello Thunder</h1>
@@ -195,6 +183,6 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
 </script>
 </body>
 </html>
-", "layout.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Home\\views\\layout.html");
+", "layout.html", "D:\\phpStudy\\WWW\\thunder\\app\\Home\\views\\layout.html");
     }
 }

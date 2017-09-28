@@ -61,7 +61,7 @@ class SqlServerConnector extends Connector implements ConnectorInterface
     protected function prefersOdbc(array $config)
     {
         return in_array('odbc', $this->getAvailableDrivers()) &&
-               ($config['odbc'] ?? null) === true;
+               array_get($config, 'odbc') === true;
     }
 
     /**

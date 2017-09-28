@@ -25,7 +25,7 @@ class __TwigTemplate_82ae6436fbf3dad7f1b55379dfd85453756ae8cb30a71a9043771bc7fab
                 <span class=\"icon-bar\"></span>
                 <span class=\"icon-bar\"></span>
             </button>
-            <a class=\"navbar-brand\" href=\"#\">Thunder Framework</a>
+            <a class=\"navbar-brand\" href=\"./\">Thunder Framework</a>
         </div>
         <div id=\"navbar\" class=\"navbar-collapse collapse\">
             <form class=\"navbar-form navbar-right\" role=\"form\">
@@ -71,7 +71,7 @@ class __TwigTemplate_82ae6436fbf3dad7f1b55379dfd85453756ae8cb30a71a9043771bc7fab
                 <span class=\"icon-bar\"></span>
                 <span class=\"icon-bar\"></span>
             </button>
-            <a class=\"navbar-brand\" href=\"#\">Thunder Framework</a>
+            <a class=\"navbar-brand\" href=\"./\">Thunder Framework</a>
         </div>
         <div id=\"navbar\" class=\"navbar-collapse collapse\">
             <form class=\"navbar-form navbar-right\" role=\"form\">
@@ -85,6 +85,6 @@ class __TwigTemplate_82ae6436fbf3dad7f1b55379dfd85453756ae8cb30a71a9043771bc7fab
             </form>
         </div>
     </div>
-</nav>", "nav.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Home\\views\\nav.html");
+</nav>", "nav.html", "D:\\phpStudy\\WWW\\thunder\\app\\Home\\views\\nav.html");
     }
 }

@@ -2,8 +2,9 @@
 namespace Home\controller;
 use \thunder\View;
 use \app\Student;
+use Illuminate\Pagination\UrlWindow;
 class IndexController{
-    use view;
+    use View;
     public function index(){
         $name = 'Thunder';
         if(input('get.login'))
@@ -120,9 +121,19 @@ class IndexController{
         $b = route()->action;
         dump($b);die;
     }
+    public function get_manualList(){
+        return table('manual')->field('id,title')->all();
+    }
+    public function get_manual(){
+        $manual = table('manual');
+        $id = input('post.id');
+        if(!$id) $manual->getFirstId();
+        $info = $manual->find($id,['id','title','content']);
+        $info['content'] = htmlspecialchars_decode($info['content']);
+        return $info;
+
+    }
     public function manual(){
-        $info = model('manual')->getOne(15);
-        $this->assign('info',$info);
         $this->display();
     }
     public function url2(){
@@ -138,5 +149,89 @@ class IndexController{
         $a = $stu->get();
 
         return(($a));die;
+    }
+    public function url4(){
+        $r = model('student');
+        $page = intval( $_GET["page"]);
+        if (!$page) {
+            $page=1;
+        }
+        $paginator = $r->paginate(2,['*'],'page',$page);
+        $paginator->setPath('./'.route()->action);
+
+        $win = new UrlWindow($paginator);
+        $url_arr = $win->get(3);
+        dump(($url_arr ));
+        if ($paginator->hasPages()) { //有结果集才显示啊
+            if (!$paginator->onFirstPage()) {
+                echo "<a href='{$paginator->previousPageUrl()}'>上页</a>"."&nbsp;&nbsp;";
+            }
+
+            if (isset( $url_arr['first'] )) {
+                foreach ($url_arr['first'] as $k=> $v ) {
+                    $style=" ";
+                    if ($k == $paginator->currentPage()) {
+                        $style=" style='color:red' ";
+                    }
+                    echo "<a {$style} href='{$v}'>$k</a>"."&nbsp;&nbsp;";
+                }
+            }
+
+            if (isset( $url_arr['slider'] )) {
+                echo '...'; // 这样页面漂亮些。
+                foreach ($url_arr['slider'] as $k=> $v ) {
+                    $style=" ";
+                    if ($k == $paginator->currentPage()) {
+                        $style=" style='color:red' ";
+                    }
+                    echo "<a {$style}  href='{$v}'>$k</a>"."&nbsp;&nbsp;";
+                }
+            }
+
+            if (isset( $url_arr['last'] )) {
+                echo '...'; // 这样页面漂亮些。
+                foreach ($url_arr['last'] as $k=> $v ) {
+                    $style=" ";
+                    if ($k == $paginator->currentPage()) {
+                        $style=" style='color:red' ";
+                    }
+                    echo "<a  {$style} href='{$v}'>$k</a>"."&nbsp;&nbsp;";
+                }
+            }
+
+            if ($paginator->lastPage()!=$page) {
+                echo "<a href='{$paginator->nextPageUrl()}'>下页</a>"."&nbsp;&nbsp;";
+            }
+
+        }else {
+            echo "没查到数据";
+        }
+
+    }
+    public function url5(){
+        $r = model('student')->limit(3)->skip(1)->get()->toarray();
+        dump($r);
+    }
+    public function mvc(){
+        $m = route()->module;
+        $c = route()->ctrl;
+        $v = route()->action;
+        dump('模块：'.$m,'控制器：'.$c,'方法：'.$v);
+    }
+    public function test(){
+//        p( table('student')->where(['dept_id'=>2])->count());
+//        p(table()->query("SELECT * FROM student")->fetchAll());
+//        $w = ['AND'=>[
+//            'id'=>1,
+//            'name'=>1
+//        ]];
+
+//        p(table('student')->limit(4)->order(['sort'=>'DESC','id'=>'DESC'])->field(['name','id'])->all());
+        $manual = table('manual');
+        $id = input('post.id');
+        if(!$id) $manual->getFirstId();
+        $info = $manual->find($id,['id','title','content']);
+        $info['content'] = htmlspecialchars_decode($info['content']);
+        return $info;
     }
 }

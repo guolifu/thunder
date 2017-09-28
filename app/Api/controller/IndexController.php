@@ -1,7 +1,7 @@
 <?php
 namespace Api\controller;
 use \thunder\View;
-header("Access-Control-Allow-Origin: *");
+//header("Access-Control-Allow-Origin: *");
 class IndexController{
     use View;
     public function index(){
@@ -45,5 +45,40 @@ class IndexController{
         $data['sex'] = 5;
         return $data;
 
+    }
+    public function checkThisWebIsOk()
+    {	/* 授权码 */
+        $my = 'ByShopWWI';
+        /* 获取授权站码 */
+        $data = input('param.key');
+
+        $ok = "console.log('ok');";
+
+        $e = 'document.write("System error!");';
+        if($data==$my){
+            return jsonp(['code'=>1,'fun'=>$ok]);
+        }else{
+            return jsonp(['code'=>0,'fun'=>$e]);
+        }
+
+    }
+    public function checkThisWebIsOk_php(){
+        /* 授权码 */
+        $my = 'ByShopWWI';
+
+        //请求页面时通信协议的名称和版本
+        $request =	$_SERVER['SERVER_PROTOCOL'];
+        $v = substr($request,-1);
+
+        // echo  ("echo ".'"'.$v.'"'.';');
+
+
+        $data = input('param.key');
+//        if($v==1) return '禁止访问！';
+        if($data!=$my){
+            return "exit('System error!');";
+        }else{
+            return "define('DS','/');define('ByShopWWI',true);";
+        }
     }
 }

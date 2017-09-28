@@ -109,13 +109,6 @@ class Connection implements ConnectionInterface
     protected $transactions = 0;
 
     /**
-     * Indicates if changes have been made to the database.
-     *
-     * @var int
-     */
-    protected $recordsModified = false;
-
-    /**
      * All of the queries run against the connection.
      *
      * @var array
@@ -453,8 +446,6 @@ class Connection implements ConnectionInterface
 
             $this->bindValues($statement, $this->prepareBindings($bindings));
 
-            $this->recordsHaveBeenModified();
-
             return $statement->execute();
         });
     }
@@ -482,11 +473,7 @@ class Connection implements ConnectionInterface
 
             $statement->execute();
 
-            $this->recordsHaveBeenModified(
-                ($count = $statement->rowCount()) > 0
-            );
-
-            return $count;
+            return $statement->rowCount();
         });
     }
 
@@ -503,11 +490,7 @@ class Connection implements ConnectionInterface
                 return true;
             }
 
-            $this->recordsHaveBeenModified(
-                $change = ($this->getPdo()->exec($query) === false ? false : true)
-            );
-
-            return $change;
+            return $this->getPdo()->exec($query) === false ? false : true;
         });
     }
 
@@ -838,19 +821,6 @@ class Connection implements ConnectionInterface
     }
 
     /**
-     * Indicate if any records have been modified.
-     *
-     * @param  bool  $value
-     * @return void
-     */
-    public function recordsHaveBeenModified($value = true)
-    {
-        if (! $this->recordsModified) {
-            $this->recordsModified = $value;
-        }
-    }
-
-    /**
      * Is Doctrine available?
      *
      * @return bool
@@ -923,11 +893,7 @@ class Connection implements ConnectionInterface
      */
     public function getReadPdo()
     {
-        if ($this->transactions > 0) {
-            return $this->getPdo();
-        }
-
-        if ($this->getConfig('sticky') && $this->recordsModified) {
+        if ($this->transactions >= 1) {
             return $this->getPdo();
         }
 
@@ -1231,6 +1197,7 @@ class Connection implements ConnectionInterface
      */
     public static function getResolver($driver)
     {
-        return static::$resolvers[$driver] ?? null;
+        return isset(static::$resolvers[$driver]) ?
+                     static::$resolvers[$driver] : null;
     }
 }

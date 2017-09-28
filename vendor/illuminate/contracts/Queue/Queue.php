@@ -45,7 +45,7 @@ interface Queue
     /**
      * Push a new job onto the queue after a delay.
      *
-     * @param  \DateTimeInterface|\DateInterval|int  $delay
+     * @param  \DateTime|int  $delay
      * @param  string  $job
      * @param  mixed   $data
      * @param  string  $queue
@@ -57,7 +57,7 @@ interface Queue
      * Push a new job onto the queue after a delay.
      *
      * @param  string  $queue
-     * @param  \DateTimeInterface|\DateInterval|int  $delay
+     * @param  \DateTime|int  $delay
      * @param  string  $job
      * @param  mixed   $data
      * @return mixed

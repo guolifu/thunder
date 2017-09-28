@@ -752,24 +752,22 @@ class Blueprint
      * Create a new date-time column on the table.
      *
      * @param  string  $column
-     * @param  int     $precision
      * @return \Illuminate\Support\Fluent
      */
-    public function dateTime($column, $precision = 0)
+    public function dateTime($column)
     {
-        return $this->addColumn('dateTime', $column, compact('precision'));
+        return $this->addColumn('dateTime', $column);
     }
 
     /**
      * Create a new date-time column (with time zone) on the table.
      *
      * @param  string  $column
-     * @param  int     $precision
      * @return \Illuminate\Support\Fluent
      */
-    public function dateTimeTz($column, $precision = 0)
+    public function dateTimeTz($column)
     {
-        return $this->addColumn('dateTimeTz', $column, compact('precision'));
+        return $this->addColumn('dateTimeTz', $column);
     }
 
     /**
@@ -798,37 +796,34 @@ class Blueprint
      * Create a new timestamp column on the table.
      *
      * @param  string  $column
-     * @param  int     $precision
      * @return \Illuminate\Support\Fluent
      */
-    public function timestamp($column, $precision = 0)
+    public function timestamp($column)
     {
-        return $this->addColumn('timestamp', $column, compact('precision'));
+        return $this->addColumn('timestamp', $column);
     }
 
     /**
      * Create a new timestamp (with time zone) column on the table.
      *
      * @param  string  $column
-     * @param  int     $precision
      * @return \Illuminate\Support\Fluent
      */
-    public function timestampTz($column, $precision = 0)
+    public function timestampTz($column)
     {
-        return $this->addColumn('timestampTz', $column, compact('precision'));
+        return $this->addColumn('timestampTz', $column);
     }
 
     /**
      * Add nullable creation and update timestamps to the table.
      *
-     * @param  int     $precision
      * @return void
      */
-    public function timestamps($precision = 0)
+    public function timestamps()
     {
-        $this->timestamp('created_at', $precision)->nullable();
+        $this->timestamp('created_at')->nullable();
 
-        $this->timestamp('updated_at', $precision)->nullable();
+        $this->timestamp('updated_at')->nullable();
     }
 
     /**
@@ -836,48 +831,44 @@ class Blueprint
      *
      * Alias for self::timestamps().
      *
-     * @param  int     $precision
      * @return void
      */
-    public function nullableTimestamps($precision = 0)
+    public function nullableTimestamps()
     {
-        $this->timestamps($precision);
+        $this->timestamps();
     }
 
     /**
      * Add creation and update timestampTz columns to the table.
      *
-     * @param  int     $precision
      * @return void
      */
-    public function timestampsTz($precision = 0)
+    public function timestampsTz()
     {
-        $this->timestampTz('created_at', $precision)->nullable();
+        $this->timestampTz('created_at')->nullable();
 
-        $this->timestampTz('updated_at', $precision)->nullable();
+        $this->timestampTz('updated_at')->nullable();
     }
 
     /**
      * Add a "deleted at" timestamp for the table.
      *
      * @param  string  $column
-     * @param  int  $precision
      * @return \Illuminate\Support\Fluent
      */
-    public function softDeletes($column = 'deleted_at', $precision = 0)
+    public function softDeletes($column = 'deleted_at')
     {
-        return $this->timestamp($column, $precision)->nullable();
+        return $this->timestamp($column)->nullable();
     }
 
     /**
      * Add a "deleted at" timestampTz for the table.
      *
-     * @param  int     $precision
      * @return \Illuminate\Support\Fluent
      */
-    public function softDeletesTz($precision = 0)
+    public function softDeletesTz()
     {
-        return $this->timestampTz('deleted_at', $precision)->nullable();
+        return $this->timestampTz('deleted_at')->nullable();
     }
 
     /**

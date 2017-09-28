@@ -11,13 +11,18 @@ class ManualController{
     }
     public function edit_form(){
         $id = input('get.id');
-        $info = table('manual')->getOne($id);
+        $info = table('manual')->find($id);
         $this->assign('info',$info);
         $this->display();
     }
     public function datas(){
+        $pageIndex = input('get.pageIndex');
+        $pageSize = input('get.pageSize');
+
+        $page = [($pageIndex-1)*$pageSize,$pageSize];
+
         $manual = table('manual');
-        $list = $manual->all();
+        $list = $manual->limit($page)->order(['sort'=>'DESC'])->all();
         foreach($list as &$v){
             $v['add_time'] = Date('Y-m-d H:i:s',$v['add_time']);
             $v['update_time'] = Date('Y-m-d H:i:s',$v['update_time']);

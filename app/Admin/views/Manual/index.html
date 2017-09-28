@@ -41,6 +41,7 @@
 								<th>创建时间</th>
 								<th>修改时间</th>
 								<th>摘要</th>
+								<th>排序</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -64,6 +65,7 @@
 				<td><% item.add_time %></td>
 				<td><% item.update_time %></td>
 				<td><% item.abs %></td>
+				<td><% item.sort %></td>
 
 				<td>
 					<!--<a href="/detail-1" target="_blank" class="layui-btn layui-btn-normal layui-btn-mini">预览</a>-->
@@ -81,7 +83,10 @@
 				base: '{{__PUBLIC__}}/Admin/js/'
 			});
 
-			layui.use(['paging','layedit', 'form'], function() {
+			layui.use(['paging','layedit', 'form','code'], function() {
+                layui.code({
+                    about:false
+                }); //引用code方法
 				var $ = layui.jquery,
 					paging = layui.paging(),
 					layerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
@@ -98,7 +103,7 @@
 					tempElem: '#tpl', //模块容器
 					pageConfig: { //分页参数配置
 						elem: '#paged', //分页容器
-						pageSize: 3 //分页大小
+						pageSize: 10 //分页大小
 					},
 					success: function() { //渲染成功的回调
 						//alert('渲染成功');

@@ -319,27 +319,6 @@ class MySqlGrammar extends Grammar
     }
 
     /**
-     * Compile the SQL needed to drop all tables.
-     *
-     * @param  array  $tables
-     * @return string
-     */
-    public function compileDropAllTables($tables)
-    {
-        return 'drop table '.implode(',', $this->wrapArray($tables));
-    }
-
-    /**
-     * Compile the SQL needed to retrieve all table names.
-     *
-     * @return string
-     */
-    public function compileGetAllTables()
-    {
-        return 'SHOW FULL TABLES WHERE table_type = \'BASE TABLE\'';
-    }
-
-    /**
      * Compile the command to enable foreign key constraints.
      *
      * @return string
@@ -569,7 +548,7 @@ class MySqlGrammar extends Grammar
      */
     protected function typeDateTime(Fluent $column)
     {
-        return $column->precision ? "datetime($column->precision)" : 'datetime';
+        return 'datetime';
     }
 
     /**
@@ -580,7 +559,7 @@ class MySqlGrammar extends Grammar
      */
     protected function typeDateTimeTz(Fluent $column)
     {
-        return $this->typeDateTime($column);
+        return 'datetime';
     }
 
     /**
@@ -614,12 +593,10 @@ class MySqlGrammar extends Grammar
     protected function typeTimestamp(Fluent $column)
     {
         if ($column->useCurrent) {
-            return $column->precision
-                    ? "timestamp($column->precision) default CURRENT_TIMESTAMP"
-                    : 'timestamp default CURRENT_TIMESTAMP';
+            return 'timestamp default CURRENT_TIMESTAMP';
         }
 
-        return $column->precision ? "timestamp($column->precision)" : 'timestamp';
+        return 'timestamp';
     }
 
     /**
@@ -630,7 +607,11 @@ class MySqlGrammar extends Grammar
      */
     protected function typeTimestampTz(Fluent $column)
     {
-        return $this->typeTimestamp($column);
+        if ($column->useCurrent) {
+            return 'timestamp default CURRENT_TIMESTAMP';
+        }
+
+        return 'timestamp';
     }
 
     /**
