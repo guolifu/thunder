@@ -2,7 +2,7 @@
 
 <p align=center>
 <img src='https://img.shields.io/travis/rust-lang/rust.svg' /> 
-<a href='https://packagist.org/packages/guolifu/thunder' target="_blank">
+<a target="_blank" href='https://packagist.org/packages/guolifu/thunder' >
 <img src='https://img.shields.io/packagist/dt/doctrine/orm.svg' />
 </a>
 </p>
