@@ -86,10 +86,10 @@ project  应用部署目录
 
 模型：`namespace  app ;`
 控制器：`namespace  模块名 \ controller ;`
-###Traits
+### Traits
 >简单来讲，PHP是单继承的语言，在PHP 5.4 Traits出现之前，PHP的类无法同时从两个基类继承属性或方法，php的Traits和Go语言的组合功能类似（可以理解为横向扩展），通过在类中使用use关键字声明要组合的Trait名称，而具体某个Trait的声明使用trait关键词，Trait不能直接实例化。Thunder中的视图层则是利用Trait引入。具体用法请看下面的代码：
 
-####定义一个trait
+#### 定义一个trait
 	namespace thunder;
 	trait View{
 	public function display(){
@@ -99,7 +99,7 @@ project  应用部署目录
 
  
 
-####使用他
+#### 使用他
 	namespace Home\controller;
 	use \thunder\View;
 	class IndexController{
@@ -109,7 +109,7 @@ project  应用部署目录
 		}
 	}
 
-###API模式数据
+### API模式数据
 >API数据的输出
 
 ##### 控制器中直接使用return
@@ -126,24 +126,24 @@ project  应用部署目录
 		}
 	}
 
-#####浏览器显示：
+##### 浏览器显示：
 
 `{"data":		 {"name":"thunder","url":"guolifu.pw"},"code":1,"message":"ok"}`
-###配置
+### 配置
 >配置文件位于` core\config`中，包括数据库，日志存储，模板后缀，默认路由等配置，还可在分组下的common（如` Home\common\config\创建覆盖配置文件`）
 >>.env作为全局环境变量配置，目前只定义了数据库配置，具体可根据需求使用`getenv()`全局获取
 
-###路由
+### 路由
 >Thunder中的路由十分简介强大，请看介绍：
 
-####url中直接访问：
+#### url中直接访问：
 
  
 
 `http://serverName/index.php（或不写）/module/controller/action/param1/value1/param2/value2/...`
 
  
-#####简洁路由注册：绵长冗余的url总是麻烦的。Thunder中支持预注册路由：
+##### 简洁路由注册：绵长冗余的url总是麻烦的。Thunder中支持预注册路由：
 
 
 	// routes\web.php
@@ -154,7 +154,7 @@ project  应用部署目录
 
 	Route::init('goRoute','Home/index/index');
 
-#####随后
+##### 随后
 
 	http://serverName/index.php（或不写）/goRoute
 					<==>	
@@ -170,21 +170,21 @@ project  应用部署目录
 
 	Route::init('goRoute/{param}','Home/index/index');
 
-#####随后
+##### 随后
 
 	http://serverName/index.php（或不写）/goRoute/param1/value1/param2/value2/.../...
 	<==>	
 	http://serverName/index.php（或不写）/goRoute/Home/index/index/param1/value1/param2/value2/.../...
 
  
-###请求
+### 请求
 >Thunder中获取类型是简介明了的
 
-#####获取请求类型
+##### 获取请求类型
 
 `http_method()`函数获取请求类型
 
-#####也可以使用
+##### 也可以使用
 
 `IS_GET（判断是否为GET请求）`
 
@@ -192,11 +192,11 @@ project  应用部署目录
 
  
 
-####获取模块、控制器、方法
+#### 获取模块、控制器、方法
 
  
 
-#####你可以在控制器中使用`route()`函数
+##### 你可以在控制器中使用`route()`函数
 
 
 
@@ -218,7 +218,7 @@ project  应用部署目录
 
 ***在浏览器中访问http://serverName/home/index/mvc***
 
-#####依次会打印出
+##### 依次会打印出
 
 	"模块：Home"
 	
@@ -227,12 +227,12 @@ project  应用部署目录
 	"方法：mvc"
 
 
-###数据库操作
+### 数据库操作
 >一个灵活的框架必然会有一个灵活强大的数据库操作，Thunder为了满足开发者的各种开发习惯，封装了传统操作和ORM操作两种模式。
 
   >为了避免开发者重复new来new去，系统提供了一个强大的函数table('表名')，你可以把他想象成为一个你即将操作的数据库对象。下面简单了解一下
 
-####单条查询：
+#### 单条查询：
 	class IndexController{
 
 		public function sql(){
@@ -275,7 +275,7 @@ project  应用部署目录
 #### 基本条件查询：
 
 
-#####你可以在查询中使用`where()`
+##### 你可以在查询中使用`where()`
 
 	class IndexController{
 
@@ -361,7 +361,7 @@ project  应用部署目录
 
   
 
-####复合查询：你可以使用"AND" 或 "OR" 来拼接非常复杂的SQL语句
+#### 复合查询：你可以使用"AND" 或 "OR" 来拼接非常复杂的SQL语句
 
  
 
@@ -419,7 +419,7 @@ project  应用部署目录
 
 
 
-####关联查询：
+#### 关联查询：
 
 `
 [>] == LEFT JOIN
@@ -438,7 +438,7 @@ project  应用部署目录
 	
 	}
 
-####连贯操作：
+#### 连贯操作：
 
  
 
@@ -480,7 +480,7 @@ project  应用部署目录
 
 
 
-####新增数据：
+#### 新增数据：
 	public function sql(){
 
 		$data = ['name'=>'xiaoming','age'=>18];
@@ -523,7 +523,7 @@ project  应用部署目录
 
 	}
 
-####删除数据：
+#### 删除数据：
 	public function sql(){
 
 		table('student')->destroy(1);	//根据id删除数据
@@ -533,7 +533,7 @@ project  应用部署目录
 	}
 
 
-####统计数据：
+#### 统计数据：
 	public function sql(){
 
 		table('student')->count();	//统计条数
@@ -550,7 +550,7 @@ project  应用部署目录
 
 
 
-####原生查询：
+#### 原生查询：
 
  
 
@@ -562,7 +562,7 @@ project  应用部署目录
 
 
 
-####事物操作：
+#### 事物操作：
 
  
 
@@ -589,14 +589,14 @@ project  应用部署目录
 	//如果修改没有成功，返回false，则回滚事务。不会修改成功也不会添加成功。
 
 
-###模型
+### 模型
 >这里的ORM模型就不详细说明了，系统提供了model('表名')函数以供调用ORM模型。具体请移步到https://docs.golaravel.com/docs/4.1/eloquent/
-###视图
+### 视图
 >Thunder封装了强大的模板引擎供开发者使用。在控制器中use \thunder\View;并且在类中use View;你就可以尽情的使用强大的引擎来协助你的工作
 
 
 
-####模板赋值：
+#### 模板赋值：
 
 
 
@@ -637,7 +637,7 @@ project  应用部署目录
 	
 	}
 
-####输出替换：
+#### 输出替换：
 
 **在tpl配置文件中自定义规则**
 
@@ -655,7 +655,7 @@ project  应用部署目录
 
 	//在html中使用{{__PUBLIC__}}调用
 
-####资源加载：
+#### 资源加载：
 `
 {{asset.css('路径')}}	//规则：server/public/模块/css/路径;
 {{asset.js('路径')}}	//规则：server/public/模块/js/路径;
@@ -664,7 +664,7 @@ project  应用部署目录
 *该方法支持第二个参数*
 
 `{{asset.css('路径',true)}} //规则：server/public/Public/css/路径;代表模块公共目录路径`
-####变量输出：
+#### 变量输出：
 
 
 `html中使用{{变量名}}`
@@ -682,7 +682,7 @@ project  应用部署目录
 ###其他
 >Thunder的一些其他操作
 
-#####session的使用：
+##### session的使用：
 
 
 
@@ -708,7 +708,7 @@ project  应用部署目录
 
 
 
-####cookie的使用：
+#### cookie的使用：
 
 	use \thunder\Cookie;
 	
@@ -731,7 +731,7 @@ project  应用部署目录
 
 
 
-####验证码：
+#### 验证码：
 
 
 
@@ -749,7 +749,7 @@ project  应用部署目录
 
 	}
 
-#####验证
+##### 验证
 
 	public function verify(){
 	
@@ -771,7 +771,7 @@ project  应用部署目录
 
 
 
-####文件上传：
+#### 文件上传：
 
 
 
