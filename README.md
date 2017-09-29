@@ -1,5 +1,6 @@
 <div align=center><img src='https://github.com/guolifu/thunder/blob/master/logo.png?raw=true'></div>
 
+<p align=center><img src='https://img.shields.io/travis/rust-lang/rust.svg'></p>
 ## 前言
 
 > Thunder，是一个免费开源的，快速、简单的面向对象的轻量级PHP开发框架。
