@@ -273,7 +273,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\tvar \$that = \$(this);
 \t\t\t\t\t\tvar \$cbx = \$that.children('td').eq(0).children('input[type=checkbox]')[0].checked;
 \t\t\t\t\t\tif(\$cbx) {
-\t\t\t\t\t\t\tvar n = \$that.children('td:last-child').children('a[data-opt=add]').data('name');
+\t\t\t\t\t\t\tvar n = \$that.children('td:last-child').children('a[data-opt=edit]').data('name');
 \t\t\t\t\t\t\tnames += n + ',';
 \t\t\t\t\t\t}
 \t\t\t\t\t});
@@ -642,7 +642,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\tvar \$that = \$(this);
 \t\t\t\t\t\tvar \$cbx = \$that.children('td').eq(0).children('input[type=checkbox]')[0].checked;
 \t\t\t\t\t\tif(\$cbx) {
-\t\t\t\t\t\t\tvar n = \$that.children('td:last-child').children('a[data-opt=add]').data('name');
+\t\t\t\t\t\t\tvar n = \$that.children('td:last-child').children('a[data-opt=edit]').data('name');
 \t\t\t\t\t\t\tnames += n + ',';
 \t\t\t\t\t\t}
 \t\t\t\t\t});
