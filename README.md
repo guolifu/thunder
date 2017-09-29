@@ -43,7 +43,7 @@ project  应用部署目录
 	├─index.php             入口文件
 	│
 	└─README.md             README 文件
-###  URL访问
+### URL访问
 `http://serverName/index.php（或不写）/模块/控制器/操作/[参数名/参数值...]`
 
 >出于优化的URL访问原则，还通过URL重写隐藏入口文件，下面以Apache为例说明隐藏应用入口文件index.php的.htaccess设置。
@@ -81,7 +81,7 @@ project  应用部署目录
 
     </IfModule>
 
-###命名空间
+### 命名空间
 >如果不清楚命名空间的基本概念，可以参考PHP手册：[命名空间](http://www.php.net/manual/zh/language.namespaces.php)
 
 模型：`namespace  app ;`
