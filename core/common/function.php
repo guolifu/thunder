@@ -332,6 +332,10 @@ function session(){
     return new \thunder\Session();
 }
 
+function Verify(){
+    return new \thunder\Verify();
+}
+
 
 
 function route(){

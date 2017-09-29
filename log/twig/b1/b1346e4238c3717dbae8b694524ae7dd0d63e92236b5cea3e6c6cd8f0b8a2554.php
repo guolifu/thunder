@@ -47,7 +47,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 <body>
 
 <div class=\"meny\" >
-    <h2>More Experiments</h2>
+    <h2>Thunder manual</h2>
     <ul id=\"left-nav\" >
         <left-nav v-for=\"(item,index) in nav_list\"
                   :nav=\"item\"
@@ -69,7 +69,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
         <content-title :title=\"title\" ></content-title>
         <content-content   v-html=\"content\"  ></content-content>
         <small>
-            Created by hakim.se
+            Created by leileida.
         </small>
     </article>
 
@@ -192,17 +192,21 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
                 type:'post',
                 success:function(r){
                     leftNav.nav_list = r;
+                    dis.display=0;
                 }
             })
         }
     })
     Vue.component('con-display',{
-        template:'<div style=\"position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;\" ><img style=\"position:relative;top:40%;left: 48%\" src=\"\\\\public\\\\Admin\\\\plugins\\\\layui\\\\css\\\\modules\\\\layer\\\\default\\\\loading-2.gif\"/></div>'
+        template:'<div style=\"position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;\" ><img style=\"position:relative;top:40%;left: 48%\" src=\"";
+        // line 164
+        echo twig_escape_filter($this->env, (isset($context["__PUBLIC__"]) ? $context["__PUBLIC__"] : null), "html", null, true);
+        echo "\\\\Admin\\\\plugins\\\\layui\\\\css\\\\modules\\\\layer\\\\default\\\\loading-2.gif\"/></div>'
     })
     var dis = new Vue({
         el:'#display',
         data:{
-            display:''
+            display:'1'
         }
     })
 
@@ -221,7 +225,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
     public function getDebugInfo()
     {
-        return array (  84 => 48,  80 => 47,  43 => 13,  37 => 10,  30 => 5,  28 => 4,  26 => 3,  24 => 2,  19 => 1,);
+        return array (  203 => 164,  84 => 48,  80 => 47,  43 => 13,  37 => 10,  30 => 5,  28 => 4,  26 => 3,  24 => 2,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -252,7 +256,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 <body>
 
 <div class=\"meny\" >
-    <h2>More Experiments</h2>
+    <h2>Thunder manual</h2>
     <ul id=\"left-nav\" >
         <left-nav v-for=\"(item,index) in nav_list\"
                   :nav=\"item\"
@@ -274,7 +278,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
         <content-title :title=\"title\" ></content-title>
         <content-content   v-html=\"content\"  ></content-content>
         <small>
-            Created by hakim.se
+            Created by leileida.
         </small>
     </article>
 
@@ -391,17 +395,18 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
                 type:'post',
                 success:function(r){
                     leftNav.nav_list = r;
+                    dis.display=0;
                 }
             })
         }
     })
     Vue.component('con-display',{
-        template:'<div style=\"position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;\" ><img style=\"position:relative;top:40%;left: 48%\" src=\"\\\\public\\\\Admin\\\\plugins\\\\layui\\\\css\\\\modules\\\\layer\\\\default\\\\loading-2.gif\"/></div>'
+        template:'<div style=\"position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;\" ><img style=\"position:relative;top:40%;left: 48%\" src=\"{{__PUBLIC__}}\\\\Admin\\\\plugins\\\\layui\\\\css\\\\modules\\\\layer\\\\default\\\\loading-2.gif\"/></div>'
     })
     var dis = new Vue({
         el:'#display',
         data:{
-            display:''
+            display:'1'
         }
     })
 

@@ -1,6 +1,6 @@
 <?php
 
-/* index/index.html */
+/* Index/index.html */
 class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fdfafe1 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -75,7 +75,10 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"layui-nav-item\">
 \t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"admin-header-user\">
-\t\t\t\t\t\t\t\t<img src=\"images/0.jpg\" />
+\t\t\t\t\t\t\t\t<img src=\"";
+        // line 51
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "images/0.jpg"), "method"), "html", null, true);
+        echo "\" />
 \t\t\t\t\t\t\t\t<span>beginner</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t<dl class=\"layui-nav-child\">
@@ -132,12 +135,15 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t<i class=\"layui-icon\">&#xe602;</i>
 \t\t\t</div>
 \t\t\t<div class=\"site-mobile-shade\"></div>
-\t\t\t
+
 \t\t\t<!--锁屏模板 start-->
 \t\t\t<script type=\"text/template\" id=\"lock-temp\">
 \t\t\t\t<div class=\"admin-header-lock\" id=\"lock-box\">
 \t\t\t\t\t<div class=\"admin-header-lock-img\">
-\t\t\t\t\t\t<img src=\"images/0.jpg\"/>
+\t\t\t\t\t\t<img src=\"";
+        // line 113
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "images/0.jpg"), "method"), "html", null, true);
+        echo "\"/>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"admin-header-lock-name\" id=\"lockUserName\">beginner</div>
 \t\t\t\t\t<input type=\"text\" class=\"admin-header-lock-input\" value=\"输入密码解锁..\" name=\"lockPwd\" id=\"lockPwd\" />
@@ -145,7 +151,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t</div>
 \t\t\t</script>
 \t\t\t<!--锁屏模板 end -->
-\t\t\t
+
 \t\t\t<script type=\"text/javascript\" src=\"";
         // line 122
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/layui/layui.js"), "method"), "html", null, true);
@@ -193,7 +199,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 
     public function getTemplateName()
     {
-        return "index/index.html";
+        return "Index/index.html";
     }
 
     public function isTraitable()
@@ -203,7 +209,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 
     public function getDebugInfo()
     {
-        return array (  159 => 124,  155 => 123,  151 => 122,  43 => 17,  39 => 16,  35 => 15,  19 => 1,);
+        return array (  165 => 124,  161 => 123,  157 => 122,  145 => 113,  80 => 51,  43 => 17,  39 => 16,  35 => 15,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -266,7 +272,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t<li class=\"layui-nav-item\">
 \t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"admin-header-user\">
-\t\t\t\t\t\t\t\t<img src=\"images/0.jpg\" />
+\t\t\t\t\t\t\t\t<img src=\"{{asset.asset('images/0.jpg')}}\" />
 \t\t\t\t\t\t\t\t<span>beginner</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t<dl class=\"layui-nav-child\">
@@ -323,12 +329,12 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t<i class=\"layui-icon\">&#xe602;</i>
 \t\t\t</div>
 \t\t\t<div class=\"site-mobile-shade\"></div>
-\t\t\t
+
 \t\t\t<!--锁屏模板 start-->
 \t\t\t<script type=\"text/template\" id=\"lock-temp\">
 \t\t\t\t<div class=\"admin-header-lock\" id=\"lock-box\">
 \t\t\t\t\t<div class=\"admin-header-lock-img\">
-\t\t\t\t\t\t<img src=\"images/0.jpg\"/>
+\t\t\t\t\t\t<img src=\"{{asset.asset('images/0.jpg')}}\"/>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"admin-header-lock-name\" id=\"lockUserName\">beginner</div>
 \t\t\t\t\t<input type=\"text\" class=\"admin-header-lock-input\" value=\"输入密码解锁..\" name=\"lockPwd\" id=\"lockPwd\" />
@@ -336,7 +342,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t</div>
 \t\t\t</script>
 \t\t\t<!--锁屏模板 end -->
-\t\t\t
+
 \t\t\t<script type=\"text/javascript\" src=\"{{asset.asset('plugins/layui/layui.js')}}\"></script>
 \t\t\t<script type=\"text/javascript\" src=\"{{asset.asset('datas/nav.js')}}\"></script>
 \t\t\t<script src=\"{{asset.js('index.js')}}\"></script>
@@ -370,6 +376,6 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t</div>
 \t</body>
 
-</html>", "index/index.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Admin\\views\\Index\\index.html");
+</html>", "Index/index.html", "D:\\phpStudy\\WWW\\thunder\\app\\Admin\\views\\Index\\index.html");
     }
 }

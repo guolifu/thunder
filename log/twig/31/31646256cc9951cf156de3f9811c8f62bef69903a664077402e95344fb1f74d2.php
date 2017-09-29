@@ -1,6 +1,6 @@
 <?php
 
-/* manual/index.html */
+/* Manual/index.html */
 class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82bcbad3 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -71,6 +71,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\t\t\t<th>创建时间</th>
 \t\t\t\t\t\t\t\t<th>修改时间</th>
 \t\t\t\t\t\t\t\t<th>摘要</th>
+\t\t\t\t\t\t\t\t<th>排序</th>
 \t\t\t\t\t\t\t\t<th>操作</th>
 \t\t\t\t\t\t\t</tr>
 \t\t\t\t\t\t</thead>
@@ -94,6 +95,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t<td><% item.add_time %></td>
 \t\t\t\t<td><% item.update_time %></td>
 \t\t\t\t<td><% item.abs %></td>
+\t\t\t\t<td><% item.sort %></td>
 
 \t\t\t\t<td>
 \t\t\t\t\t<!--<a href=\"/detail-1\" target=\"_blank\" class=\"layui-btn layui-btn-normal layui-btn-mini\">预览</a>-->
@@ -105,19 +107,22 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 
 \t\t</script>
 \t\t<script type=\"text/javascript\" src=\"";
-        // line 77
+        // line 79
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/layui/layui.js"), "method"), "html", null, true);
         echo "\"></script>
 
 \t\t<script>
 \t\t\tlayui.config({
 \t\t\t\tbase: '";
-        // line 81
+        // line 83
         echo twig_escape_filter($this->env, (isset($context["__PUBLIC__"]) ? $context["__PUBLIC__"] : null), "html", null, true);
         echo "/Admin/js/'
 \t\t\t});
 
-\t\t\tlayui.use(['paging','layedit', 'form'], function() {
+\t\t\tlayui.use(['paging','layedit', 'form','code'], function() {
+                layui.code({
+                    about:false
+                }); //引用code方法
 \t\t\t\tvar \$ = layui.jquery,
 \t\t\t\t\tpaging = layui.paging(),
 \t\t\t\t\tlayerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
@@ -134,7 +139,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\ttempElem: '#tpl', //模块容器
 \t\t\t\t\tpageConfig: { //分页参数配置
 \t\t\t\t\t\telem: '#paged', //分页容器
-\t\t\t\t\t\tpageSize: 3 //分页大小
+\t\t\t\t\t\tpageSize: 10 //分页大小
 \t\t\t\t\t},
 \t\t\t\t\tsuccess: function() { //渲染成功的回调
 \t\t\t\t\t\t//alert('渲染成功');
@@ -198,7 +203,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\t\t\t\t\tbtn: ['保存', '取消'],
 \t\t\t\t\t\t\t\t\t\tshade: false,
 //\t\t\t\t\t\t\t\t\t\toffset: ['100px', '30%'],
-\t\t\t\t\t\t\t\t\t\tarea: ['1000px', '580px'],
+\t\t\t\t\t\t\t\t\t\tarea: ['1000px', '500px'],
 \t\t\t\t\t\t\t\t\t\tmaxmin: true,
 \t\t\t\t\t\t\t\t\t\tyes: function(index) {
 \t\t\t\t\t\t\t\t\t\t\t//触发表单的提交事件
@@ -291,7 +296,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\t\tcontent: form,
 \t\t\t\t\t\t\tbtn: ['保存', '取消'],
 \t\t\t\t\t\t\tshade: false,
-\t\t\t\t\t\t\tarea: ['1000px', '580px'],
+\t\t\t\t\t\t\tarea: ['1000px', '500px'],
 \t\t\t\t\t\t\tmaxmin: true,
 \t\t\t\t\t\t\tyes: function(index) {
 \t\t\t\t\t\t\t\t//触发表单的提交事件
@@ -375,7 +380,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 
     public function getTemplateName()
     {
-        return "manual/index.html";
+        return "Manual/index.html";
     }
 
     public function isTraitable()
@@ -385,7 +390,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 
     public function getDebugInfo()
     {
-        return array (  116 => 81,  109 => 77,  39 => 10,  35 => 9,  31 => 8,  27 => 7,  19 => 1,);
+        return array (  118 => 83,  111 => 79,  39 => 10,  35 => 9,  31 => 8,  27 => 7,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -441,6 +446,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\t\t\t<th>创建时间</th>
 \t\t\t\t\t\t\t\t<th>修改时间</th>
 \t\t\t\t\t\t\t\t<th>摘要</th>
+\t\t\t\t\t\t\t\t<th>排序</th>
 \t\t\t\t\t\t\t\t<th>操作</th>
 \t\t\t\t\t\t\t</tr>
 \t\t\t\t\t\t</thead>
@@ -464,6 +470,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t<td><% item.add_time %></td>
 \t\t\t\t<td><% item.update_time %></td>
 \t\t\t\t<td><% item.abs %></td>
+\t\t\t\t<td><% item.sort %></td>
 
 \t\t\t\t<td>
 \t\t\t\t\t<!--<a href=\"/detail-1\" target=\"_blank\" class=\"layui-btn layui-btn-normal layui-btn-mini\">预览</a>-->
@@ -481,7 +488,10 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\tbase: '{{__PUBLIC__}}/Admin/js/'
 \t\t\t});
 
-\t\t\tlayui.use(['paging','layedit', 'form'], function() {
+\t\t\tlayui.use(['paging','layedit', 'form','code'], function() {
+                layui.code({
+                    about:false
+                }); //引用code方法
 \t\t\t\tvar \$ = layui.jquery,
 \t\t\t\t\tpaging = layui.paging(),
 \t\t\t\t\tlayerTips = parent.layer === undefined ? layui.layer : parent.layer, //获取父窗口的layer对象
@@ -498,7 +508,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\ttempElem: '#tpl', //模块容器
 \t\t\t\t\tpageConfig: { //分页参数配置
 \t\t\t\t\t\telem: '#paged', //分页容器
-\t\t\t\t\t\tpageSize: 3 //分页大小
+\t\t\t\t\t\tpageSize: 10 //分页大小
 \t\t\t\t\t},
 \t\t\t\t\tsuccess: function() { //渲染成功的回调
 \t\t\t\t\t\t//alert('渲染成功');
@@ -562,7 +572,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\t\t\t\t\tbtn: ['保存', '取消'],
 \t\t\t\t\t\t\t\t\t\tshade: false,
 //\t\t\t\t\t\t\t\t\t\toffset: ['100px', '30%'],
-\t\t\t\t\t\t\t\t\t\tarea: ['1000px', '580px'],
+\t\t\t\t\t\t\t\t\t\tarea: ['1000px', '500px'],
 \t\t\t\t\t\t\t\t\t\tmaxmin: true,
 \t\t\t\t\t\t\t\t\t\tyes: function(index) {
 \t\t\t\t\t\t\t\t\t\t\t//触发表单的提交事件
@@ -655,7 +665,7 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t\t\t\t\t\tcontent: form,
 \t\t\t\t\t\t\tbtn: ['保存', '取消'],
 \t\t\t\t\t\t\tshade: false,
-\t\t\t\t\t\t\tarea: ['1000px', '580px'],
+\t\t\t\t\t\t\tarea: ['1000px', '500px'],
 \t\t\t\t\t\t\tmaxmin: true,
 \t\t\t\t\t\t\tyes: function(index) {
 \t\t\t\t\t\t\t\t//触发表单的提交事件
@@ -734,6 +744,6 @@ class __TwigTemplate_17f65d046851717db05574358017e0d573849feb8e46c3665b27216a82b
 \t\t</script>
 \t</body>
 
-</html>", "manual/index.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Admin\\views\\Manual\\index.html");
+</html>", "Manual/index.html", "D:\\phpStudy\\WWW\\thunder\\app\\Admin\\views\\Manual\\index.html");
     }
 }

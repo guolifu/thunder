@@ -1,6 +1,6 @@
 <?php
 namespace thunder;
-class cookie
+class Cookie
 {
     const SECRETKEY = 'jonson';//混淆字符串
 
@@ -36,7 +36,7 @@ class cookie
     /**
      * 删除cookie
      */
-    public static function drop($name)
+    public static function del($name)
     {
         if ($name == '' || empty($_COOKIE[$name])) {
             return true;

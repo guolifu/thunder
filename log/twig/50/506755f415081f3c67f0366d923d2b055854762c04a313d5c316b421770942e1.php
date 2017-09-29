@@ -1,6 +1,6 @@
 <?php
 
-/* index/main.html */
+/* Index/main.html */
 class __TwigTemplate_a92bc40f90e94c0cc2b5a7472620ee44ff0e55db4a7d07acaa710e81e5228504 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -211,7 +211,7 @@ class __TwigTemplate_a92bc40f90e94c0cc2b5a7472620ee44ff0e55db4a7d07acaa710e81e52
 
     public function getTemplateName()
     {
-        return "index/main.html";
+        return "Index/main.html";
     }
 
     public function isTraitable()
@@ -418,6 +418,6 @@ class __TwigTemplate_a92bc40f90e94c0cc2b5a7472620ee44ff0e55db4a7d07acaa710e81e52
 \t\t</div>
 \t</body>
 
-</html>", "index/main.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Admin\\views\\Index\\main.html");
+</html>", "Index/main.html", "D:\\phpStudy\\WWW\\thunder\\app\\Admin\\views\\Index\\main.html");
     }
 }

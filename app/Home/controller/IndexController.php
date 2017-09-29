@@ -1,7 +1,9 @@
 <?php
 namespace Home\controller;
+use thunder\session;
 use \thunder\View;
 use \app\Student;
+use \thunder\Cookie;
 use Illuminate\Pagination\UrlWindow;
 class IndexController{
     use View;
@@ -82,7 +84,7 @@ class IndexController{
         $this->display();
     }
     public function c_verify(){
-        $v = new \thunder\Verify();
+        $v = verify();
         $v->length = 4;
         $v->useNoise = false;
         $v->useCurve = false;
@@ -90,7 +92,7 @@ class IndexController{
     }
     public function verify(){
         $code = input('post.code');
-        $v = new \thunder\Verify();
+        $v = verify();
         if($v->check($code))
         header('Location:./index?login=1');
         $this->display();
@@ -99,11 +101,13 @@ class IndexController{
         $name = 'Thunder';
         $m = model('student');
         $res = $m->all();
-        $this->assign('name',$name);
-        $this->assign('students',$res);
+//        $this->assign('name',$name);
+//        $this->assign('students',$res);
         $a = "<b>a</b>";
 
-        $this->assign('b',$a);
+//        $this->assign('b',$a);
+
+        $this->assign('name','1111');
 
         $this->display();
     }
@@ -125,9 +129,8 @@ class IndexController{
         return table('manual')->field('id,title')->all();
     }
     public function get_manual(){
-        $manual = table('manual');
-        $id = input('post.id');
-        if(!$id) $manual->getFirstId();
+        $manual = table('manual');$id=input('post.id');
+        $id = ($id!='')? input('post.id'):$manual->getFirstId();
         $info = $manual->find($id,['id','title','content']);
         $info['content'] = htmlspecialchars_decode($info['content']);
         return $info;
@@ -219,7 +222,7 @@ class IndexController{
         dump('模块：'.$m,'控制器：'.$c,'方法：'.$v);
     }
     public function test(){
-//        p( table('student')->where(['dept_id'=>2])->count());
+//        p( table('student')->join(["[><]dept"=>['dept_id'=>'id']])->field('student.id,dept.dept_name(name)')->all());
 //        p(table()->query("SELECT * FROM student")->fetchAll());
 //        $w = ['AND'=>[
 //            'id'=>1,
@@ -227,11 +230,28 @@ class IndexController{
 //        ]];
 
 //        p(table('student')->limit(4)->order(['sort'=>'DESC','id'=>'DESC'])->field(['name','id'])->all());
-        $manual = table('manual');
-        $id = input('post.id');
-        if(!$id) $manual->getFirstId();
-        $info = $manual->find($id,['id','title','content']);
-        $info['content'] = htmlspecialchars_decode($info['content']);
-        return $info;
+//        $manual = table('manual');
+//        $id = input('post.id');
+//        if(!$id) $manual->getFirstId();
+//        $info = $manual->find($id,['id','title','content']);
+//        $info['content'] = htmlspecialchars_decode($info['content']);
+//        p( $info);
+//        p( table('manual')->field('id,title')->all());
+//        p( table('student')->where(['dept_id'=>3])->update(['name'=>'2222']));
+//        p(table('math')->field('id2')->sum());
+
+//        p(table()->query("SELECT * FROM student")->fetchAll());
+//        $database = table('student');
+//        $database->action(function ($database){
+//            $database->add(['name'=>'事物']);
+//            return false;
+//        });
     }
+    public function co(){
+        session()->set('ff','mm');
+    }
+    public function co1(){
+        p(session()->get('ff'));
+    }
+
 }

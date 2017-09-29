@@ -9,8 +9,14 @@ trait View{
         $this->assign = $this->replace;
     }
 
-    public function assign($name,$value){
-        $this->assign[$name] = $value;
+    public function assign($name,$value=''){
+        if(is_array($name)){
+            foreach ($name as $k=>$v){
+                $this->assign[$k] = $v;
+            }
+        }else{
+            $this->assign[$name] = $value;
+        }
         $this->assign = array_merge($this->assign,$this->replace);
     }
     public function display($view=''){
