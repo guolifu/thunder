@@ -43,7 +43,7 @@ project  应用部署目录
 	├─index.php             入口文件
 	│
 	└─README.md             README 文件
-### URL访问
+## URL访问
 `http://serverName/index.php（或不写）/模块/控制器/操作/[参数名/参数值...]`
 
 >出于优化的URL访问原则，还通过URL重写隐藏入口文件，下面以Apache为例说明隐藏应用入口文件index.php的.htaccess设置。
@@ -81,12 +81,12 @@ project  应用部署目录
 
     </IfModule>
 
-### 命名空间
+## 命名空间
 >如果不清楚命名空间的基本概念，可以参考PHP手册：[命名空间](http://www.php.net/manual/zh/language.namespaces.php)
 
 模型：`namespace  app ;`
 控制器：`namespace  模块名 \ controller ;`
-### Traits
+## Traits
 >简单来讲，PHP是单继承的语言，在PHP 5.4 Traits出现之前，PHP的类无法同时从两个基类继承属性或方法，php的Traits和Go语言的组合功能类似（可以理解为横向扩展），通过在类中使用use关键字声明要组合的Trait名称，而具体某个Trait的声明使用trait关键词，Trait不能直接实例化。Thunder中的视图层则是利用Trait引入。具体用法请看下面的代码：
 
 #### 定义一个trait
@@ -109,7 +109,7 @@ project  应用部署目录
 		}
 	}
 
-### API模式数据
+## API模式数据
 >API数据的输出
 
 ##### 控制器中直接使用return
@@ -129,11 +129,11 @@ project  应用部署目录
 ##### 浏览器显示：
 
 `{"data":		 {"name":"thunder","url":"guolifu.pw"},"code":1,"message":"ok"}`
-### 配置
+## 配置
 >配置文件位于` core\config`中，包括数据库，日志存储，模板后缀，默认路由等配置，还可在分组下的common（如` Home\common\config\创建覆盖配置文件`）
 >>.env作为全局环境变量配置，目前只定义了数据库配置，具体可根据需求使用`getenv()`全局获取
 
-### 路由
+## 路由
 >Thunder中的路由十分简介强大，请看介绍：
 
 #### url中直接访问：
@@ -177,7 +177,7 @@ project  应用部署目录
 	http://serverName/index.php（或不写）/goRoute/Home/index/index/param1/value1/param2/value2/.../...
 
  
-### 请求
+## 请求
 >Thunder中获取类型是简介明了的
 
 ##### 获取请求类型
@@ -227,7 +227,7 @@ project  应用部署目录
 	"方法：mvc"
 
 
-### 数据库操作
+## 数据库操作
 >一个灵活的框架必然会有一个灵活强大的数据库操作，Thunder为了满足开发者的各种开发习惯，封装了传统操作和ORM操作两种模式。
 
   >为了避免开发者重复new来new去，系统提供了一个强大的函数table('表名')，你可以把他想象成为一个你即将操作的数据库对象。下面简单了解一下
@@ -589,9 +589,9 @@ project  应用部署目录
 	//如果修改没有成功，返回false，则回滚事务。不会修改成功也不会添加成功。
 
 
-### 模型
+## 模型
 >这里的ORM模型就不详细说明了，系统提供了model('表名')函数以供调用ORM模型。具体请移步到https://docs.golaravel.com/docs/4.1/eloquent/
-### 视图
+## 视图
 >Thunder封装了强大的模板引擎供开发者使用。在控制器中use \thunder\View;并且在类中use View;你就可以尽情的使用强大的引擎来协助你的工作
 
 
@@ -679,7 +679,7 @@ project  应用部署目录
  **更多模板操作请参考[twig手册](https://twig.symfony.com/)**
 
 
-###其他
+## 其他
 >Thunder的一些其他操作
 
 ##### session的使用：
