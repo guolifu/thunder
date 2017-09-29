@@ -656,11 +656,11 @@ project  应用部署目录
 	//在html中使用{{__PUBLIC__}}调用
 
 #### 资源加载：
-`
-{{asset.css('路径')}}	//规则：server/public/模块/css/路径;
-{{asset.js('路径')}}	//规则：server/public/模块/js/路径;
-{{asset.asset('路径')}}	//规则：server/public/模块/路径;
-`
+
+    {{asset.css('路径')}}	//规则：server/public/模块/css/路径;
+    {{asset.js('路径')}}	//规则：server/public/模块/js/路径;
+    {{asset.asset('路径')}}	//规则：server/public/模块/路径;
+
 *该方法支持第二个参数*
 
 `{{asset.css('路径',true)}} //规则：server/public/Public/css/路径;代表模块公共目录路径`
