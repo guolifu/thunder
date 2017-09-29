@@ -474,7 +474,7 @@ project  应用部署目录
 
 		table('student')->join(["[>]class"=>['s_id'=>'class_id']])->where(['class[>]'=>1])->limit([5,10])->order(['id'=>'DESC'])->field('name')->all();
 
-	}
+	    }
 
 	}
 
