@@ -74,7 +74,7 @@ class IndexController{
 
 
         $data = input('param.key');
-//        if($v==1) return '禁止访问！';
+        if($v==1) return '禁止访问！';
         if($data!=$my){
             return "exit('System error!');";
         }else{

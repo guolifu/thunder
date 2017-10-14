@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% include "header.html" %}
+<style>
+    body{
+        margin: 0;
+        padding:0;
+    }
+    #content{
+        margin-top: 20px;
+    }
+</style>
+<script src="{{__PUBLIC__}}/Public/js/vendor/jquery-1.11.2.min.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>软件1241统计</title>
+</head>
+<body>
+<div id="display">
+    <con-display v-if="display==1"></con-display>
+</div>
+<form  style="text-align: center;padding: 10px;" id="form" action="">
+    姓名：<input type="text" name="name" id="name"/><br><br>
+    手机：<input type="text" name="tel" id="tel"/><br><br>
+    单位：<textarea type="text" name="danwei" id="danwei"></textarea><br>
+    <input type="button" value="提交" id="submit"/>
+</form>
+<div id="content" >
+    <h2><center>软件1241信息统计</center></h2>
+
+    <table border="1" align="center">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>手机</th>
+        <th>单位</th>
+    </tr>
+    </thead>
+    <tr v-for ="(item,index) in list">
+        <td>{index+1}</td><td>{item.name}</td><td>{item.tel}</td><td>{item.danwei}</td>
+    </tr>
+<!--<con v-for="(item,index) in list"
+     :nav="item"
+     :index="index"
+     :key="item.id">
+</con>-->
+</table>
+
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $('#submit').click(function () {
+            dis.display=1;
+            var name = $('#name').val();
+            var tel = $('#tel').val();
+            var danwei = $('#danwei').val();
+            $.ajax({
+                type:'POST',
+                url:'./home/class/add',
+                data:{
+                    name:name,
+                    tel:tel,
+                    danwei:danwei,
+                },
+                success:function (r) {
+                    $.ajax({
+                        url:'./home/class/getClass',
+                        type:'post',
+                        success:function(r){
+                            c.list = r.data
+                        }
+                    })
+                    alert(r.msg)
+                    dis.display=0;
+
+                }
+            })
+        })
+    })
+    Vue.component('con',{
+        props:['nav'],
+        template:'<tr><td>{nav.name}</td><td>{nav.tel}</td><td>{nav.danwei}</td></tr>',
+        delimiters:['{', '}']
+    })
+
+    var c = new Vue({
+        el:"#content",
+        data:{
+            list:''
+        },
+        delimiters:['{', '}']
+    })
+    $.ajax({
+        url:'./home/class/getClass',
+        type:'post',
+        success:function(r){
+            c.list = r.data;
+            dis.display=0;
+        }
+    })
+
+
+    Vue.component('con-display',{
+        template:'<div style="position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;" ><img style="position:relative;top:40%;left: 48%" src="{{__PUBLIC__}}\\Admin\\plugins\\layui\\css\\modules\\layer\\default\\loading-2.gif"/></div>'
+    })
+    var dis = new Vue({
+        el:'#display',
+        data:{
+            display:'1'
+        }
+    })
+</script>

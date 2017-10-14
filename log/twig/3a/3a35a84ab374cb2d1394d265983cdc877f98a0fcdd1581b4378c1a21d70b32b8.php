@@ -58,38 +58,25 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
 
     <hr>
 
-    <footer>
-        <p>&copy; Company 2015</p>
-    </footer>
-</div> <!-- /container -->
-<script>window.jQuery || document.write('<script src=\"";
-        // line 42
-        echo twig_escape_filter($this->env, (isset($context["__PUBLIC__"]) ? $context["__PUBLIC__"] : null), "html", null, true);
-        echo "/Public/js/vendor/jquery-1.11.2.min.js\"><\\/script>')</script>
-
-<script src=";
-        // line 44
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "vendor/bootstrap.min.js", 1 => true), "method"), "html", null, true);
-        echo "></script>
-
-<script src=";
-        // line 46
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "main.js", 1 => true), "method"), "html", null, true);
-        echo "></script>
 
 ";
-        // line 49
+        // line 39
+        $this->loadTemplate("footer.html", "layout.html", 39)->display($context);
+        // line 40
+        echo "    
+
+";
+        // line 43
         echo "<script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
         e=o.createElement(i);r=o.getElementsByTagName(i)[0];
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 </script>
 </body>
-</html>
-";
+</html>";
     }
 
     // line 18
@@ -112,7 +99,7 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
 
     public function getDebugInfo()
     {
-        return array (  99 => 19,  96 => 18,  82 => 49,  77 => 46,  72 => 44,  67 => 42,  44 => 21,  42 => 18,  27 => 5,  24 => 3,  22 => 2,  20 => 1,);
+        return array (  86 => 19,  83 => 18,  70 => 43,  66 => 40,  64 => 39,  44 => 21,  42 => 18,  27 => 5,  24 => 3,  22 => 2,  20 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -162,27 +149,20 @@ class __TwigTemplate_1545def7ca8c3dbcaced85143abe5504a9f1a1b18a1673d76a7eb18fd09
 
     <hr>
 
-    <footer>
-        <p>&copy; Company 2015</p>
-    </footer>
-</div> <!-- /container -->
-<script>window.jQuery || document.write('<script src=\"{{__PUBLIC__}}/Public/js/vendor/jquery-1.11.2.min.js\"><\\/script>')</script>
 
-<script src={{asset.js('vendor/bootstrap.min.js',true)}}></script>
-
-<script src={{asset.js('main.js',true)}}></script>
+{% include \"footer.html\" %}
+    
 
 {# Google Analytics: change UA-XXXXX-X to be your site's ID. #}
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
         e=o.createElement(i);r=o.getElementsByTagName(i)[0];
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 </script>
 </body>
-</html>
-", "layout.html", "D:\\phpStudy\\WWW\\thunder\\app\\Home\\views\\layout.html");
+</html>", "layout.html", "D:\\phpStudy\\WWW\\thunder\\app\\Home\\views\\layout.html");
     }
 }

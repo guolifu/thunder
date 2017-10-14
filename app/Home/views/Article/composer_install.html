@@ -1,0 +1,65 @@
+<title>Composer 下载 安装</title>
+<style>
+	body{text-align:center;line-height: 1.5;} 
+	img{
+		max-width:500px;
+	}
+	.main{
+		width: 800px;
+		margin: 0 auto;
+	}
+	.hr{
+		border:1px dashed #AB9999;
+		margin: 30px auto;
+		width:56.8%;
+	}
+	.cnblogs_code {
+		background-color: #f5f5f5;
+		font-family: Courier New!important;
+		font-size: 12px!important;
+		border: 1px solid #ccc;
+		padding: 15px;
+		overflow: auto;
+		margin: 5px 0;
+		color: #000;
+		text-align:start;
+		line-height: 2;
+	}
+</style>
+<center><h1>Composer</h1></center>
+<div class='main'>
+<h3>下载</h3>
+<div class='cnblogs_code'>
+打开命令行并依次执行下列命令安装最新版本的 Composer：<br/><br/>
+php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+<br/>
+<br/>
+php composer-setup.php
+<img src='{{__PUBLIC__}}/Public/img/composer/1.png' />
+</div>
+</div>
+
+
+<div class='hr'></div>
+
+<div class='main'>
+<h3>安装</h3>
+<div class='cnblogs_code'>
+全局安装是将 Composer 安装到系统环境变量 PATH 所包含的路径下面，然后就能够在命令行窗口中直接执行 composer 命令。<br/><br/>
+找到并进入 PHP 的安装目录（和你在命令行中执行的 php 指令应该是同一套 PHP）。<br/>
+将 composer.phar 复制到 PHP 的安装目录下面，也就是和 php.exe 在同一级目录。<br/>
+在 PHP 安装目录下新建一个 composer.bat 文件，并将下列代码保存到此文件中。<br/>
+@php "%~dp0composer.phar" %* <br/><br/>
+<img src='{{__PUBLIC__}}/Public/img/composer/2.png' />
+
+<img src='{{__PUBLIC__}}/Public/img/composer/3.png' />
+<br/>
+<br/>
+最后重新打开一个命令行窗口试一试执行 composer --version 或 composer -V 看看是否正确输出版本号。
+<img src='{{__PUBLIC__}}/Public/img/composer/4.png' />
+</div>
+
+</div>
+
+<div class='hr'></div>
+<div><h3>end</h3></div>

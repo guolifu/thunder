@@ -1,0 +1,135 @@
+<title>centos6.5 系统-搭建lamp（php7）环境--（yum在线安装）</title>
+<style>
+	body{text-align:center} 
+	img{
+		max-width:500px;
+	}
+	.main{
+		width: 800px;
+		margin: 0 auto;
+	}
+	.hr{
+		border:1px dashed #AB9999;
+		margin: 30px auto;
+		width:56.8%;
+	}
+	.cnblogs_code {
+		background-color: #f5f5f5;
+		font-family: Courier New!important;
+		font-size: 12px!important;
+		border: 1px solid #ccc;
+		padding: 5px;
+		overflow: auto;
+		margin: 5px 0;
+		color: #000;
+		text-align:start;
+	}
+</style>
+<center><h1>centos6.5 系统-搭建lamp（php7）环境--（yum在线安装）</h1></center>
+<div class='main'>
+<h3>1、查看当前服务器的版本</h3>
+	<div class='cnblogs_code'>
+	#方法1
+	cat /etc/redhat-release
+	<br/>
+	<br/>
+	#方法2
+	rpm -q centos-release
+	</div>
+</div>
+
+
+<div class='hr'></div>
+
+<div class='main'><h3>2、安装apache</h3>
+<div class='cnblogs_code'>
+#一键安装apache
+<br/>
+yum install httpd
+<br/>
+<br/>
+#启动apche
+<br/>
+/etc/init.d/httpd start                 &nbsp;     #方法1 
+<br/>
+<br/>
+service httpd start           &nbsp;   &nbsp; &nbsp;            #方法2
+<br/>
+<br/>
+#设置apache开机自动启动
+<br/>
+chkconfig --levels 235 httpd on
+</div>
+</div>
+
+<div class='hr'></div>
+
+
+<div class='main'><h3>3、安装php7</h3>
+<div class='cnblogs_code'>
+#更新yum源（默认yum源中无php7）
+<br/>
+rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm  
+<br/>
+<br/>
+#安装php及常用的拓展模块
+<br/>
+yum -y install php70w php70w-mysql php70w-mbstring php70w-mcrypt php70w-gd php70w-imap php70w-ldap php70w-odbc php70w-pear php70w-xml php70w-xmlrpc php70w-pdo
+<br/>
+<br/>
+#查看php安装了那些拓展模块
+<br/>
+php -m
+<br/>
+<br/>
+#安装其他你需要的拓展模块
+<br/>
+yum -y install php70w-xxx
+</div>
+</div>
+
+<div class='hr'></div>
+
+<div class='main'><h3>4、安装mysql5.5</h3>
+<div class='cnblogs_code'>
+#查询是否安装了mysql，默认是安装了mysql-libs的5.1版本的。需卸载
+<br/>
+rpm -qa|grep mysql
+<br/>
+rpm -e mysql-libs --nodeps       #不检测依赖性
+<br/>
+<br/>
+#增加两个新的repo源
+<br/>
+rpm -Uvh http://mirror.steadfast.net/epel/6/i386/epel-release-6-8.noarch.rpm
+<br/>
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+<br/>
+<br/>
+#检测源是否安装成功
+<br/>
+yum --enablerepo=remi,remi-test list mysql mysql-server
+<br/>
+<br/>
+#安装mysql5.5
+<br/>
+yum -y --enablerepo=remi,remi-test install mysql mysql-server
+<br/>
+<br/>
+#启动mysql
+<br/>
+/etc/init.d/mysqld start
+<br/>
+<br/>
+#将mysql设置为开机自动启动
+<br/>
+chkconfig --levels 345 mysqld on
+<br/>
+<br/>
+#设置mysql的root密码
+<br/>
+/usr/bin/mysql_secure_installation
+</div>
+</div>
+<div class='hr'></div>
+<div class="main"><h3>end</h3><a style='float:right' href="./port">下一篇：centos配置端口</a></div>

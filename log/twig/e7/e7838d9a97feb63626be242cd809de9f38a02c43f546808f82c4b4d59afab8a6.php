@@ -51,7 +51,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t<div class=\"layui-main\">
 \t\t\t\t\t<div class=\"admin-login-box\">
 \t\t\t\t\t\t<a class=\"logo\" style=\"left: 0;\" href=\"http://beginner.zhengjinfan.cn/demo/beginner_admin/\">
-\t\t\t\t\t\t\t<span style=\"font-size: 22px;\">BeginnerAdmin</span>
+\t\t\t\t\t\t\t<span style=\"font-size: 22px;\">ThunderAdmin</span>
 \t\t\t\t\t\t</a>
 \t\t\t\t\t\t<div class=\"admin-side-toggle\">
 \t\t\t\t\t\t\t<i class=\"fa fa-bars\" aria-hidden=\"true\"></i>
@@ -94,7 +94,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t</dd>
 \t\t\t\t\t\t\t\t<dd>
-\t\t\t\t\t\t\t\t\t<a href=\"login.html\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> 注销</a>
+\t\t\t\t\t\t\t\t\t<a href=\"admin/index/logout\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> 注销</a>
 \t\t\t\t\t\t\t\t</dd>
 \t\t\t\t\t\t\t</dl>
 \t\t\t\t\t\t</li>
@@ -248,7 +248,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t<div class=\"layui-main\">
 \t\t\t\t\t<div class=\"admin-login-box\">
 \t\t\t\t\t\t<a class=\"logo\" style=\"left: 0;\" href=\"http://beginner.zhengjinfan.cn/demo/beginner_admin/\">
-\t\t\t\t\t\t\t<span style=\"font-size: 22px;\">BeginnerAdmin</span>
+\t\t\t\t\t\t\t<span style=\"font-size: 22px;\">ThunderAdmin</span>
 \t\t\t\t\t\t</a>
 \t\t\t\t\t\t<div class=\"admin-side-toggle\">
 \t\t\t\t\t\t\t<i class=\"fa fa-bars\" aria-hidden=\"true\"></i>
@@ -288,7 +288,7 @@ class __TwigTemplate_5c3da43d80eea0f3ea8d529ea2c25450bfdb54a1703a8d3d4b17e5eb9fd
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t</dd>
 \t\t\t\t\t\t\t\t<dd>
-\t\t\t\t\t\t\t\t\t<a href=\"login.html\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> 注销</a>
+\t\t\t\t\t\t\t\t\t<a href=\"admin/index/logout\"><i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> 注销</a>
 \t\t\t\t\t\t\t\t</dd>
 \t\t\t\t\t\t\t</dl>
 \t\t\t\t\t\t</li>

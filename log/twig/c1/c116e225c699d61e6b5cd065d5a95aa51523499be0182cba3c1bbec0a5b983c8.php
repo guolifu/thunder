@@ -30,22 +30,17 @@ class __TwigTemplate_a0fedd282cb7fa1e919b4bc9496bd41eda6f3bff9e9650e0a38649c59cd
         // line 11
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "css", array(0 => "bootstrap.min.css", 1 => true), "method"), "html", null, true);
         echo ">
-    <style>
-        body {
-            padding-top: 50px;
-            padding-bottom: 20px;
-        }
-    </style>
+
     <link rel=\"stylesheet\" href=";
-        // line 18
+        // line 13
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "css", array(0 => "bootstrap-theme.min.css", 1 => true), "method"), "html", null, true);
         echo ">
     <link rel=\"stylesheet\" href=";
-        // line 19
+        // line 14
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "css", array(0 => "main.css", 1 => true), "method"), "html", null, true);
         echo ">
     <script src=";
-        // line 20
+        // line 15
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "/vendor/modernizr-2.8.3-respond-1.4.2.min.js", 1 => true), "method"), "html", null, true);
         echo "></script>
 </head>
@@ -64,7 +59,7 @@ class __TwigTemplate_a0fedd282cb7fa1e919b4bc9496bd41eda6f3bff9e9650e0a38649c59cd
 
     public function getDebugInfo()
     {
-        return array (  49 => 20,  45 => 19,  41 => 18,  31 => 11,  19 => 1,);
+        return array (  44 => 15,  40 => 14,  36 => 13,  31 => 11,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -88,16 +83,11 @@ class __TwigTemplate_a0fedd282cb7fa1e919b4bc9496bd41eda6f3bff9e9650e0a38649c59cd
     <link rel=\"apple-touch-icon\" href=\"favicon.ico\">
 
     <link rel=\"stylesheet\" href={{asset.css('bootstrap.min.css',true)}}>
-    <style>
-        body {
-            padding-top: 50px;
-            padding-bottom: 20px;
-        }
-    </style>
+
     <link rel=\"stylesheet\" href={{asset.css('bootstrap-theme.min.css',true)}}>
     <link rel=\"stylesheet\" href={{asset.css('main.css',true)}}>
     <script src={{asset.js('/vendor/modernizr-2.8.3-respond-1.4.2.min.js',true)}}></script>
 </head>
-<body>", "layout_top.html", "D:\\phpStudy\\PHPTutorial\\WWW\\thunder\\app\\Home\\views\\layout_top.html");
+<body>", "layout_top.html", "D:\\phpStudy\\WWW\\thunder\\app\\Home\\views\\layout_top.html");
     }
 }

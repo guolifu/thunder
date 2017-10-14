@@ -1,0 +1,72 @@
+<title>CentOS 6.5开放端口方法</title>
+<style>
+	body{text-align:center} 
+	img{
+		max-width:500px;
+	}
+	.main{
+		width: 800px;
+		margin: 0 auto;
+	}
+	.hr{
+		border:1px dashed #AB9999;
+		margin: 30px auto;
+		width:56.8%;
+	}
+	.cnblogs_code {
+		background-color: #f5f5f5;
+		font-family: Courier New!important;
+		font-size: 12px!important;
+		border: 1px solid #ccc;
+		padding: 5px;
+		overflow: auto;
+		margin: 5px 0;
+		color: #000;
+		text-align:start;
+	}
+</style>
+<center><h1>CentOS 6.5开放端口方法</h1></center>
+<div class='main'>
+<h3>1、开启端口（以80端口为例）</h3>
+<div class='cnblogs_code'>
+方法一：
+<br/>
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT   写入修改
+<br/>
+/etc/init.d/iptables save   保存修改
+<br/>
+service iptables restart    重启防火墙，修改生效
+<br/><br/>
+方法二：
+ <br/>
+       vi /etc/sysconfig/iptables  打开配置文件加入如下语句:
+ <br/>
+       -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT   重启防火墙，修改完成
+</div>
+</div>
+
+
+<div class='hr'></div>
+
+<div class='main'>
+<h3>2、关闭端口</h3>
+<div class='cnblogs_code'>
+  方法一：
+  <br/>
+         /sbin/iptables -I INPUT -p tcp --dport 80 -j DROP   写入修改
+  <br/>
+         /etc/init.d/iptables save   保存修改
+  <br/>
+        service iptables restart    重启防火墙，修改生效
+  <br/> <br/>
+       方法二：
+  <br/>
+       vi /etc/sysconfig/iptables  打开配置文件加入如下语句:
+  <br/>
+       -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j DROP   重启防火墙，修改完成
+</div>
+
+</div>
+
+<div class='hr'></div>
+<div><h3>end</h3></div>

@@ -34,14 +34,13 @@
 
 
 <div  class="contents">
-    <article  id="contents" >
+    <article  id="contents" style="padding-top: 30px;">
         <content-title :title="title" ></content-title>
         <content-content   v-html="content"  ></content-content>
         <small>
-            Created by leileida.
         </small>
     </article>
-
+    {% include "footer.html" %}
 </div>
 
 <script src={{asset.js('meny.js')}}></script>

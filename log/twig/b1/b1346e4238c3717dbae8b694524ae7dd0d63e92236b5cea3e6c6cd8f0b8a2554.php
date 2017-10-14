@@ -65,22 +65,24 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
 
 <div  class=\"contents\">
-    <article  id=\"contents\" >
+    <article  id=\"contents\" style=\"padding-top: 30px;\">
         <content-title :title=\"title\" ></content-title>
         <content-content   v-html=\"content\"  ></content-content>
         <small>
-            Created by leileida.
         </small>
     </article>
-
-</div>
+    ";
+        // line 43
+        $this->loadTemplate("footer.html", "Index/manual.html", 43)->display($context);
+        // line 44
+        echo "</div>
 
 <script src=";
-        // line 47
+        // line 46
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "js", array(0 => "meny.js"), "method"), "html", null, true);
         echo "></script>
 <script src=\"";
-        // line 48
+        // line 47
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["asset"]) ? $context["asset"] : null), "asset", array(0 => "plugins/layui/layui.js"), "method"), "html", null, true);
         echo "\"></script>
 <script>
@@ -199,7 +201,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
     })
     Vue.component('con-display',{
         template:'<div style=\"position:fixed;width:100%;height:100%;z-index: 1;background-color: rgb(0, 0, 0);opacity: 0.3;\" ><img style=\"position:relative;top:40%;left: 48%\" src=\"";
-        // line 164
+        // line 163
         echo twig_escape_filter($this->env, (isset($context["__PUBLIC__"]) ? $context["__PUBLIC__"] : null), "html", null, true);
         echo "\\\\Admin\\\\plugins\\\\layui\\\\css\\\\modules\\\\layer\\\\default\\\\loading-2.gif\"/></div>'
     })
@@ -225,7 +227,7 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
     public function getDebugInfo()
     {
-        return array (  203 => 164,  84 => 48,  80 => 47,  43 => 13,  37 => 10,  30 => 5,  28 => 4,  26 => 3,  24 => 2,  19 => 1,);
+        return array (  205 => 163,  86 => 47,  82 => 46,  78 => 44,  76 => 43,  43 => 13,  37 => 10,  30 => 5,  28 => 4,  26 => 3,  24 => 2,  19 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -274,14 +276,13 @@ class __TwigTemplate_f4159b3bb98d7e77fcdea33ba0c8563d875db40e18db9055075f4c2e4df
 
 
 <div  class=\"contents\">
-    <article  id=\"contents\" >
+    <article  id=\"contents\" style=\"padding-top: 30px;\">
         <content-title :title=\"title\" ></content-title>
         <content-content   v-html=\"content\"  ></content-content>
         <small>
-            Created by leileida.
         </small>
     </article>
-
+    {% include \"footer.html\" %}
 </div>
 
 <script src={{asset.js('meny.js')}}></script>
